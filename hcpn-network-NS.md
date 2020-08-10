@@ -1121,121 +1121,121 @@ df_deg['Region'] = df_deg['Region'].map(region_map)
     <tr>
       <th>ARMM</th>
       <td>24</td>
-      <td>6.89</td>
+      <td>6.94</td>
       <td>4.50</td>
       <td>18</td>
     </tr>
     <tr>
       <th>CAR</th>
       <td>32</td>
-      <td>9.42</td>
-      <td>6.50</td>
+      <td>9.50</td>
+      <td>7.00</td>
       <td>36</td>
     </tr>
     <tr>
       <th>I</th>
       <td>68</td>
-      <td>15.97</td>
+      <td>14.95</td>
       <td>10.00</td>
-      <td>36</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>II</th>
       <td>58</td>
-      <td>10.26</td>
+      <td>9.66</td>
       <td>7.00</td>
-      <td>34</td>
+      <td>38</td>
     </tr>
     <tr>
       <th>III</th>
       <td>153</td>
-      <td>18.53</td>
-      <td>13.00</td>
-      <td>57</td>
+      <td>17.21</td>
+      <td>12.50</td>
+      <td>62</td>
     </tr>
     <tr>
       <th>IV-A</th>
       <td>144</td>
-      <td>12.16</td>
+      <td>11.51</td>
       <td>8.00</td>
-      <td>57</td>
+      <td>61</td>
     </tr>
     <tr>
       <th>IV-B</th>
       <td>59</td>
-      <td>8.52</td>
+      <td>8.32</td>
       <td>6.00</td>
-      <td>33</td>
+      <td>34</td>
     </tr>
     <tr>
       <th>IX</th>
       <td>53</td>
-      <td>14.33</td>
+      <td>13.17</td>
       <td>11.00</td>
-      <td>21</td>
+      <td>23</td>
     </tr>
     <tr>
       <th>NCR</th>
       <td>73</td>
-      <td>31.84</td>
-      <td>29.00</td>
-      <td>45</td>
+      <td>29.92</td>
+      <td>28.50</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>62</td>
-      <td>11.69</td>
+      <td>65</td>
+      <td>12.10</td>
       <td>8.00</td>
-      <td>39</td>
+      <td>41</td>
     </tr>
     <tr>
       <th>VI</th>
       <td>96</td>
-      <td>10.76</td>
+      <td>10.84</td>
       <td>7.00</td>
       <td>50</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>59</td>
-      <td>10.47</td>
+      <td>63</td>
+      <td>10.23</td>
       <td>8.00</td>
-      <td>45</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>VIII</th>
       <td>146</td>
-      <td>15.79</td>
+      <td>15.92</td>
       <td>11.00</td>
       <td>39</td>
     </tr>
     <tr>
       <th>X</th>
       <td>47</td>
-      <td>8.50</td>
-      <td>6.00</td>
+      <td>8.58</td>
+      <td>6.50</td>
       <td>36</td>
     </tr>
     <tr>
       <th>XI</th>
       <td>30</td>
-      <td>7.90</td>
-      <td>6.00</td>
-      <td>21</td>
+      <td>6.85</td>
+      <td>5.50</td>
+      <td>26</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>46</td>
-      <td>9.17</td>
-      <td>5.50</td>
-      <td>18</td>
+      <td>47</td>
+      <td>8.10</td>
+      <td>5.00</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>XIII</th>
       <td>37</td>
-      <td>7.72</td>
+      <td>7.58</td>
       <td>6.00</td>
-      <td>25</td>
+      <td>26</td>
     </tr>
   </tbody>
 </table>
@@ -1298,42 +1298,42 @@ deg_outlier
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>4.88</td>
-      <td>4.88</td>
-      <td>4.88</td>
-      <td>4.88</td>
+      <td>6.00</td>
+      <td>6.00</td>
+      <td>6.00</td>
+      <td>6.00</td>
       <td>1</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>1.62</td>
-      <td>12.62</td>
-      <td>7.38</td>
-      <td>7.62</td>
-      <td>4</td>
+      <td>3.75</td>
+      <td>10.75</td>
+      <td>7.42</td>
+      <td>7.75</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>1.38</td>
-      <td>39.38</td>
-      <td>26.62</td>
-      <td>32.88</td>
+      <td>1.75</td>
+      <td>39.75</td>
+      <td>27.00</td>
+      <td>33.25</td>
       <td>4</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>3.75</td>
-      <td>37.75</td>
-      <td>16.75</td>
-      <td>8.75</td>
+      <td>0.62</td>
+      <td>34.62</td>
+      <td>13.62</td>
+      <td>5.62</td>
       <td>3</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>6.50</td>
-      <td>125.50</td>
-      <td>40.17</td>
-      <td>28.00</td>
+      <td>4.50</td>
+      <td>123.50</td>
+      <td>38.83</td>
+      <td>27.50</td>
       <td>6</td>
     </tr>
     <tr>
@@ -1354,27 +1354,27 @@ deg_outlier
     </tr>
     <tr>
       <th>IX</th>
-      <td>17.00</td>
-      <td>17.00</td>
-      <td>17.00</td>
-      <td>17.00</td>
+      <td>16.00</td>
+      <td>16.00</td>
+      <td>16.00</td>
+      <td>16.00</td>
       <td>1</td>
     </tr>
     <tr>
       <th>NCR</th>
-      <td>4.50</td>
-      <td>4.50</td>
-      <td>4.50</td>
-      <td>4.50</td>
+      <td>4.88</td>
+      <td>4.88</td>
+      <td>4.88</td>
+      <td>4.88</td>
       <td>1</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>12.75</td>
-      <td>42.75</td>
-      <td>32.75</td>
-      <td>42.75</td>
-      <td>3</td>
+      <td>12.00</td>
+      <td>45.00</td>
+      <td>31.25</td>
+      <td>34.00</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>VI</th>
@@ -1386,19 +1386,19 @@ deg_outlier
     </tr>
     <tr>
       <th>VII</th>
-      <td>2.00</td>
-      <td>38.00</td>
-      <td>14.00</td>
-      <td>8.00</td>
+      <td>1.62</td>
+      <td>41.62</td>
+      <td>14.62</td>
+      <td>7.62</td>
       <td>4</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>0.75</td>
-      <td>123.75</td>
-      <td>29.95</td>
-      <td>4.75</td>
-      <td>5</td>
+      <td>0.25</td>
+      <td>121.25</td>
+      <td>34.75</td>
+      <td>8.75</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>X</th>
@@ -1410,26 +1410,26 @@ deg_outlier
     </tr>
     <tr>
       <th>XI</th>
-      <td>11.50</td>
-      <td>13.50</td>
-      <td>12.50</td>
-      <td>12.50</td>
+      <td>8.00</td>
+      <td>10.00</td>
+      <td>9.00</td>
+      <td>9.00</td>
       <td>2</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>25.12</td>
-      <td>25.12</td>
-      <td>25.12</td>
-      <td>25.12</td>
+      <td>26.50</td>
+      <td>26.50</td>
+      <td>26.50</td>
+      <td>26.50</td>
       <td>1</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>2.00</td>
-      <td>23.00</td>
-      <td>12.50</td>
-      <td>12.50</td>
+      <td>2.62</td>
+      <td>23.62</td>
+      <td>13.12</td>
+      <td>13.12</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -1508,122 +1508,122 @@ df_deg['Region'] = df_deg['Region'].map(region_map)
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>8</td>
-      <td>0.13</td>
-      <td>0</td>
-      <td>75</td>
+      <td>43</td>
+      <td>3.72</td>
+      <td>1.00</td>
+      <td>76</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>13</td>
-      <td>0.40</td>
-      <td>0</td>
-      <td>96</td>
+      <td>27</td>
+      <td>7.54</td>
+      <td>6.00</td>
+      <td>98</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>13</td>
-      <td>0.35</td>
-      <td>0</td>
-      <td>144</td>
+      <td>58</td>
+      <td>9.66</td>
+      <td>7.00</td>
+      <td>148</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>5</td>
-      <td>0.24</td>
-      <td>0</td>
-      <td>82</td>
+      <td>45</td>
+      <td>13.63</td>
+      <td>11.00</td>
+      <td>86</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>15</td>
-      <td>0.15</td>
-      <td>0</td>
-      <td>260</td>
+      <td>24</td>
+      <td>6.53</td>
+      <td>5.00</td>
+      <td>264</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>24</td>
-      <td>0.65</td>
-      <td>0</td>
-      <td>164</td>
+      <td>60</td>
+      <td>9.97</td>
+      <td>8.00</td>
+      <td>183</td>
     </tr>
     <tr>
       <th>IV-B</th>
-      <td>6</td>
-      <td>0.38</td>
-      <td>0</td>
+      <td>50</td>
+      <td>13.84</td>
+      <td>11.00</td>
       <td>79</td>
     </tr>
     <tr>
       <th>IX</th>
-      <td>22</td>
-      <td>0.89</td>
-      <td>0</td>
-      <td>95</td>
+      <td>39</td>
+      <td>8.04</td>
+      <td>6.50</td>
+      <td>96</td>
     </tr>
     <tr>
       <th>NCR</th>
       <td>25</td>
-      <td>0.25</td>
-      <td>0</td>
-      <td>382</td>
+      <td>0.29</td>
+      <td>0.00</td>
+      <td>384</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>13</td>
-      <td>0.82</td>
-      <td>0</td>
+      <td>40</td>
+      <td>9.53</td>
+      <td>8.00</td>
       <td>129</td>
     </tr>
     <tr>
       <th>VI</th>
-      <td>11</td>
-      <td>0.56</td>
-      <td>0</td>
-      <td>141</td>
+      <td>47</td>
+      <td>12.17</td>
+      <td>10.00</td>
+      <td>142</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>18</td>
-      <td>0.90</td>
-      <td>0</td>
-      <td>129</td>
+      <td>37</td>
+      <td>11.29</td>
+      <td>9.00</td>
+      <td>141</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>16</td>
-      <td>0.54</td>
-      <td>0</td>
-      <td>160</td>
+      <td>22</td>
+      <td>4.84</td>
+      <td>4.00</td>
+      <td>161</td>
     </tr>
     <tr>
       <th>X</th>
-      <td>13</td>
-      <td>0.62</td>
-      <td>0</td>
-      <td>81</td>
+      <td>73</td>
+      <td>10.98</td>
+      <td>9.00</td>
+      <td>88</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>11</td>
-      <td>0.44</td>
-      <td>0</td>
-      <td>54</td>
+      <td>41</td>
+      <td>15.94</td>
+      <td>16.00</td>
+      <td>63</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>25</td>
-      <td>1.34</td>
-      <td>0</td>
-      <td>35</td>
+      <td>49</td>
+      <td>16.78</td>
+      <td>18.00</td>
+      <td>46</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>8</td>
-      <td>0.73</td>
-      <td>0</td>
-      <td>56</td>
+      <td>35</td>
+      <td>4.95</td>
+      <td>3.50</td>
+      <td>58</td>
     </tr>
   </tbody>
 </table>
@@ -1640,510 +1640,6 @@ upper_fence = df_deg.groupby('Region')['Degree'].quantile(0.75) + 1.5 * (df_deg.
 
 
 ```python
-df_deg[df_deg['Region']=='CAR']
-```
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Region</th>
-      <th>Degree</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>75</th>
-      <td>CAR</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>80</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>CAR</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>84</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>85</th>
-      <td>CAR</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>87</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>88</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>89</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>90</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>91</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>92</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>93</th>
-      <td>CAR</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>100</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>103</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>104</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>106</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>107</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>108</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>109</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>110</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>111</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>112</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>113</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>114</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>115</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>116</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>117</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>118</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>119</th>
-      <td>CAR</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>120</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>121</th>
-      <td>CAR</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>122</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>123</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>124</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>125</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>126</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>127</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>128</th>
-      <td>CAR</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>129</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>130</th>
-      <td>CAR</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>131</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>132</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>133</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>134</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>135</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>136</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>137</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>138</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>139</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>140</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>141</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>142</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>143</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>144</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>CAR</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>150</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>151</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>152</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>153</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>154</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>155</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>156</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>157</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>160</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>161</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>163</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>164</th>
-      <td>CAR</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>165</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>166</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>167</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>168</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>169</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>170</th>
-      <td>CAR</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
 fig, ax = plt.subplots(figsize=(10,8))
 
 # fig = plt.figure()
@@ -2154,7 +1650,7 @@ ax.set_xticklabels(labels, ha='right');
 ```
 
 
-![png](output_img/output_120_0.png)
+![png](output_img/output_119_0.png)
 
 
 
@@ -2235,139 +1731,139 @@ bhs_rhu_spl
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>4.29</td>
-      <td>4.29</td>
-      <td>4.29</td>
-      <td>4.29</td>
-      <td>1</td>
+      <td>0.65</td>
+      <td>30.09</td>
+      <td>5.56</td>
+      <td>4.06</td>
+      <td>43</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>2.61</td>
-      <td>12.68</td>
-      <td>7.60</td>
-      <td>8.42</td>
-      <td>6</td>
+      <td>1.52</td>
+      <td>21.32</td>
+      <td>6.02</td>
+      <td>5.03</td>
+      <td>75</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>0.98</td>
-      <td>20.15</td>
-      <td>5.96</td>
-      <td>3.36</td>
-      <td>8</td>
+      <td>0.00</td>
+      <td>31.66</td>
+      <td>4.45</td>
+      <td>3.59</td>
+      <td>140</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>2.36</td>
-      <td>16.81</td>
-      <td>10.96</td>
-      <td>10.32</td>
-      <td>10</td>
+      <td>2.39</td>
+      <td>31.66</td>
+      <td>5.75</td>
+      <td>5.40</td>
+      <td>82</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>0.35</td>
-      <td>9.25</td>
-      <td>3.64</td>
-      <td>3.11</td>
-      <td>5</td>
+      <td>0.09</td>
+      <td>24.48</td>
+      <td>3.19</td>
+      <td>2.70</td>
+      <td>237</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>0.83</td>
-      <td>15.99</td>
-      <td>4.22</td>
-      <td>4.24</td>
-      <td>15</td>
+      <td>0.21</td>
+      <td>30.29</td>
+      <td>3.93</td>
+      <td>3.35</td>
+      <td>157</td>
     </tr>
     <tr>
       <th>IV-B</th>
-      <td>6.16</td>
-      <td>21.42</td>
-      <td>13.79</td>
-      <td>13.79</td>
-      <td>2</td>
+      <td>2.34</td>
+      <td>51.20</td>
+      <td>8.06</td>
+      <td>5.81</td>
+      <td>75</td>
     </tr>
     <tr>
       <th>IX</th>
-      <td>3.83</td>
-      <td>42.95</td>
-      <td>16.33</td>
-      <td>8.21</td>
-      <td>6</td>
+      <td>0.86</td>
+      <td>42.92</td>
+      <td>6.72</td>
+      <td>4.83</td>
+      <td>92</td>
     </tr>
     <tr>
       <th>NCR</th>
-      <td>1.52</td>
-      <td>83.05</td>
-      <td>53.08</td>
-      <td>63.88</td>
-      <td>4</td>
+      <td>0.25</td>
+      <td>73.30</td>
+      <td>14.82</td>
+      <td>3.23</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>1.22</td>
-      <td>57.83</td>
-      <td>16.51</td>
-      <td>7.84</td>
-      <td>14</td>
+      <td>0.13</td>
+      <td>32.46</td>
+      <td>6.71</td>
+      <td>4.98</td>
+      <td>118</td>
     </tr>
     <tr>
       <th>VI</th>
-      <td>0.00</td>
-      <td>32.29</td>
-      <td>8.31</td>
-      <td>5.91</td>
-      <td>17</td>
+      <td>0.54</td>
+      <td>38.20</td>
+      <td>5.56</td>
+      <td>4.35</td>
+      <td>136</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>0.37</td>
-      <td>12.33</td>
-      <td>4.32</td>
-      <td>3.99</td>
-      <td>21</td>
+      <td>1.09</td>
+      <td>28.91</td>
+      <td>5.10</td>
+      <td>4.27</td>
+      <td>134</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>0.00</td>
-      <td>49.12</td>
-      <td>13.45</td>
-      <td>5.65</td>
-      <td>10</td>
+      <td>0.04</td>
+      <td>86.02</td>
+      <td>6.28</td>
+      <td>4.21</td>
+      <td>145</td>
     </tr>
     <tr>
       <th>X</th>
-      <td>3.17</td>
-      <td>22.97</td>
-      <td>9.34</td>
-      <td>7.30</td>
-      <td>9</td>
+      <td>1.00</td>
+      <td>23.34</td>
+      <td>5.95</td>
+      <td>4.62</td>
+      <td>83</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>3.79</td>
-      <td>12.32</td>
-      <td>6.77</td>
-      <td>4.19</td>
-      <td>3</td>
+      <td>0.79</td>
+      <td>47.85</td>
+      <td>8.91</td>
+      <td>6.29</td>
+      <td>58</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>4.33</td>
-      <td>33.07</td>
-      <td>10.53</td>
-      <td>5.78</td>
-      <td>6</td>
+      <td>2.23</td>
+      <td>67.11</td>
+      <td>9.84</td>
+      <td>6.95</td>
+      <td>44</td>
     </tr>
     <tr>
       <th>XIII</th>
       <td>0.65</td>
-      <td>24.45</td>
-      <td>7.07</td>
-      <td>5.99</td>
-      <td>13</td>
+      <td>34.38</td>
+      <td>6.72</td>
+      <td>5.89</td>
+      <td>43</td>
     </tr>
   </tbody>
 </table>
@@ -2389,7 +1885,7 @@ ax.set_ylabel("Average shortest path length (BHS->RHU)", fontsize=14);
 ```
 
 
-![png](output_img/output_131_0.png)
+![png](output_img/output_130_0.png)
 
 
 ##### RHU -> HOSP path
@@ -2448,25 +1944,25 @@ rhu_hosp_spl
     <tr>
       <th>ARMM</th>
       <td>13.96</td>
-      <td>41.71</td>
-      <td>27.51</td>
-      <td>25.55</td>
+      <td>52.74</td>
+      <td>30.15</td>
+      <td>32.53</td>
       <td>18</td>
     </tr>
     <tr>
       <th>CAR</th>
       <td>6.52</td>
       <td>30.51</td>
-      <td>15.63</td>
-      <td>14.41</td>
+      <td>16.47</td>
+      <td>16.00</td>
       <td>35</td>
     </tr>
     <tr>
       <th>I</th>
       <td>5.73</td>
-      <td>32.67</td>
-      <td>16.12</td>
-      <td>12.81</td>
+      <td>34.93</td>
+      <td>16.85</td>
+      <td>14.64</td>
       <td>36</td>
     </tr>
     <tr>
@@ -2489,8 +1985,8 @@ rhu_hosp_spl
       <th>IV-A</th>
       <td>3.13</td>
       <td>72.94</td>
-      <td>15.79</td>
-      <td>14.95</td>
+      <td>16.03</td>
+      <td>15.33</td>
       <td>57</td>
     </tr>
     <tr>
@@ -2505,8 +2001,8 @@ rhu_hosp_spl
       <th>IX</th>
       <td>0.42</td>
       <td>56.19</td>
-      <td>23.47</td>
-      <td>21.24</td>
+      <td>23.80</td>
+      <td>22.07</td>
       <td>21</td>
     </tr>
     <tr>
@@ -2521,7 +2017,7 @@ rhu_hosp_spl
       <th>V</th>
       <td>10.95</td>
       <td>52.01</td>
-      <td>22.81</td>
+      <td>22.74</td>
       <td>19.48</td>
       <td>39</td>
     </tr>
@@ -2529,8 +2025,8 @@ rhu_hosp_spl
       <th>VI</th>
       <td>7.50</td>
       <td>40.18</td>
-      <td>16.84</td>
-      <td>15.35</td>
+      <td>18.40</td>
+      <td>16.46</td>
       <td>47</td>
     </tr>
     <tr>
@@ -2544,33 +2040,33 @@ rhu_hosp_spl
     <tr>
       <th>VIII</th>
       <td>7.55</td>
-      <td>55.53</td>
-      <td>25.25</td>
-      <td>23.95</td>
+      <td>66.16</td>
+      <td>26.83</td>
+      <td>23.98</td>
       <td>39</td>
     </tr>
     <tr>
       <th>X</th>
       <td>1.53</td>
       <td>53.28</td>
-      <td>20.09</td>
-      <td>16.63</td>
+      <td>20.28</td>
+      <td>17.49</td>
       <td>36</td>
     </tr>
     <tr>
       <th>XI</th>
       <td>7.14</td>
-      <td>48.44</td>
-      <td>26.17</td>
-      <td>23.32</td>
-      <td>21</td>
+      <td>75.00</td>
+      <td>29.56</td>
+      <td>25.20</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>13.03</td>
-      <td>41.43</td>
-      <td>20.74</td>
-      <td>17.68</td>
+      <td>14.24</td>
+      <td>81.92</td>
+      <td>34.14</td>
+      <td>19.55</td>
       <td>17</td>
     </tr>
     <tr>
@@ -2604,7 +2100,7 @@ ax.set_ylabel("Average shortest path length (RHU->Hosp)", fontsize=14);
 ```
 
 
-![png](output_img/output_137_0.png)
+![png](output_img/output_136_0.png)
 
 
 ##### BHS -> HOSP path
@@ -2662,139 +2158,139 @@ bhs_hosp_spl
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>12.17</td>
-      <td>38.93</td>
-      <td>25.24</td>
-      <td>24.61</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>CAR</th>
-      <td>15.29</td>
-      <td>62.75</td>
-      <td>27.42</td>
-      <td>22.69</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>I</th>
-      <td>1.74</td>
-      <td>69.47</td>
-      <td>22.28</td>
-      <td>17.81</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>II</th>
-      <td>9.06</td>
-      <td>75.55</td>
-      <td>39.42</td>
-      <td>36.04</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>III</th>
-      <td>1.13</td>
-      <td>63.65</td>
-      <td>18.09</td>
-      <td>13.53</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>IV-A</th>
-      <td>1.45</td>
-      <td>49.21</td>
-      <td>18.65</td>
-      <td>17.41</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <th>IV-B</th>
-      <td>11.32</td>
-      <td>23.08</td>
-      <td>17.20</td>
-      <td>17.20</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>IX</th>
-      <td>10.07</td>
-      <td>52.89</td>
-      <td>33.75</td>
-      <td>39.08</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>NCR</th>
-      <td>3.09</td>
-      <td>86.34</td>
-      <td>53.10</td>
-      <td>65.95</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>V</th>
-      <td>16.30</td>
-      <td>63.85</td>
-      <td>35.28</td>
-      <td>31.63</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>VI</th>
-      <td>7.13</td>
-      <td>60.55</td>
-      <td>25.50</td>
-      <td>22.54</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>VII</th>
-      <td>2.91</td>
-      <td>64.14</td>
-      <td>20.35</td>
-      <td>20.19</td>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>VIII</th>
-      <td>13.70</td>
-      <td>73.88</td>
-      <td>38.24</td>
-      <td>35.28</td>
+      <td>4.51</td>
+      <td>65.32</td>
+      <td>35.23</td>
+      <td>38.25</td>
       <td>17</td>
     </tr>
     <tr>
+      <th>CAR</th>
+      <td>10.50</td>
+      <td>40.53</td>
+      <td>22.46</td>
+      <td>21.81</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>3.78</td>
+      <td>36.87</td>
+      <td>18.46</td>
+      <td>16.85</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>II</th>
+      <td>4.40</td>
+      <td>49.01</td>
+      <td>21.31</td>
+      <td>21.14</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>III</th>
+      <td>1.27</td>
+      <td>37.93</td>
+      <td>15.56</td>
+      <td>12.76</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>IV-A</th>
+      <td>1.00</td>
+      <td>78.27</td>
+      <td>18.08</td>
+      <td>15.30</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>IV-B</th>
+      <td>3.78</td>
+      <td>56.02</td>
+      <td>29.10</td>
+      <td>28.42</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>IX</th>
+      <td>0.87</td>
+      <td>61.03</td>
+      <td>25.67</td>
+      <td>24.71</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>NCR</th>
+      <td>1.21</td>
+      <td>68.62</td>
+      <td>19.19</td>
+      <td>6.63</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>0.67</td>
+      <td>51.68</td>
+      <td>25.13</td>
+      <td>22.92</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>9.23</td>
+      <td>49.10</td>
+      <td>21.48</td>
+      <td>19.70</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>VII</th>
+      <td>6.58</td>
+      <td>62.52</td>
+      <td>23.95</td>
+      <td>23.19</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>VIII</th>
+      <td>12.82</td>
+      <td>88.35</td>
+      <td>33.74</td>
+      <td>29.56</td>
+      <td>39</td>
+    </tr>
+    <tr>
       <th>X</th>
-      <td>15.62</td>
-      <td>41.22</td>
-      <td>25.33</td>
-      <td>21.74</td>
-      <td>14</td>
+      <td>7.83</td>
+      <td>52.84</td>
+      <td>23.69</td>
+      <td>22.38</td>
+      <td>36</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>8.32</td>
-      <td>55.47</td>
-      <td>28.33</td>
-      <td>26.42</td>
-      <td>6</td>
+      <td>1.86</td>
+      <td>74.25</td>
+      <td>29.39</td>
+      <td>30.16</td>
+      <td>25</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>10.54</td>
-      <td>41.89</td>
-      <td>26.88</td>
-      <td>25.69</td>
-      <td>7</td>
+      <td>2.80</td>
+      <td>71.17</td>
+      <td>30.50</td>
+      <td>23.27</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>7.16</td>
-      <td>44.44</td>
-      <td>23.76</td>
-      <td>22.36</td>
-      <td>18</td>
+      <td>6.83</td>
+      <td>57.35</td>
+      <td>24.26</td>
+      <td>24.00</td>
+      <td>26</td>
     </tr>
   </tbody>
 </table>
@@ -2819,7 +2315,7 @@ ax.set_ylabel("Average shortest path length (BHS->Hosp)", fontsize=14);
 ```
 
 
-![png](output_img/output_143_0.png)
+![png](output_img/output_142_0.png)
 
 
 ## Simulations
@@ -3164,7 +2660,7 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_img/output_150_1.png)
+![png](output_img/output_149_1.png)
 
 
 
@@ -3244,7 +2740,7 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_img/output_151_1.png)
+![png](output_img/output_150_1.png)
 
 
 
@@ -3271,23 +2767,23 @@ print("Remaining hospitals")
   <tbody>
     <tr>
       <th>AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
-      <td>22.22</td>
+      <td>27.78</td>
       <td>0.00</td>
     </tr>
     <tr>
       <th>CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
-      <td>38.89</td>
+      <td>41.67</td>
       <td>2.78</td>
     </tr>
     <tr>
       <th>REGION IV-B (MIMAROPA)</th>
-      <td>26.47</td>
-      <td>2.94</td>
+      <td>24.24</td>
+      <td>3.03</td>
     </tr>
     <tr>
       <th>NATIONAL CAPITAL REGION (NCR)</th>
-      <td>27.08</td>
-      <td>8.33</td>
+      <td>26.67</td>
+      <td>8.89</td>
     </tr>
     <tr>
       <th>REGION X (NORTHERN MINDANAO)</th>
@@ -3296,63 +2792,63 @@ print("Remaining hospitals")
     </tr>
     <tr>
       <th>REGION XI (DAVAO REGION)</th>
-      <td>26.92</td>
-      <td>19.23</td>
+      <td>38.10</td>
+      <td>23.81</td>
     </tr>
     <tr>
       <th>REGION XII (SOCCSKSA RGEN)</th>
-      <td>28.57</td>
-      <td>19.05</td>
+      <td>38.89</td>
+      <td>22.22</td>
     </tr>
     <tr>
       <th>REGION XIII (CARAGA)</th>
-      <td>26.92</td>
-      <td>11.54</td>
+      <td>32.00</td>
+      <td>12.00</td>
     </tr>
     <tr>
       <th>REGION I (ILOCOS REGION)</th>
-      <td>12.82</td>
-      <td>5.13</td>
+      <td>13.89</td>
+      <td>5.56</td>
     </tr>
     <tr>
       <th>REGION II (CAGAYAN VALLEY)</th>
-      <td>8.11</td>
+      <td>9.09</td>
       <td>0.00</td>
     </tr>
     <tr>
       <th>REGION III (CENTRAL LUZON)</th>
-      <td>4.84</td>
-      <td>1.61</td>
+      <td>5.26</td>
+      <td>1.75</td>
     </tr>
     <tr>
       <th>REGION IV-A (CALABAR ZON)</th>
-      <td>8.20</td>
-      <td>1.64</td>
+      <td>8.77</td>
+      <td>1.75</td>
     </tr>
     <tr>
       <th>REGION V (BICOL REGION)</th>
-      <td>4.88</td>
-      <td>2.44</td>
+      <td>5.13</td>
+      <td>2.56</td>
     </tr>
     <tr>
       <th>REGION VI (WESTERN VISAYAS)</th>
-      <td>6.00</td>
+      <td>8.00</td>
       <td>2.00</td>
     </tr>
     <tr>
       <th>REGION VII (CENTRAL VISAYAS)</th>
-      <td>10.42</td>
-      <td>4.17</td>
+      <td>11.11</td>
+      <td>4.44</td>
     </tr>
     <tr>
       <th>REGION VIII (EASTERN VISAYAS)</th>
-      <td>12.82</td>
+      <td>17.95</td>
       <td>5.13</td>
     </tr>
     <tr>
       <th>REGION IX (ZAMBOANGA PENINSULA)</th>
-      <td>17.39</td>
-      <td>13.04</td>
+      <td>19.05</td>
+      <td>14.29</td>
     </tr>
   </tbody>
 </table>
@@ -3384,22 +2880,22 @@ print("RHU isolates")
   <tbody>
     <tr>
       <th>AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
-      <td>67.92</td>
+      <td>56.60</td>
       <td>100.00</td>
     </tr>
     <tr>
       <th>CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
-      <td>12.33</td>
+      <td>17.81</td>
       <td>100.00</td>
     </tr>
     <tr>
       <th>REGION IV-B (MIMAROPA)</th>
-      <td>58.70</td>
+      <td>76.09</td>
       <td>100.00</td>
     </tr>
     <tr>
       <th>NATIONAL CAPITAL REGION (NCR)</th>
-      <td>45.27</td>
+      <td>48.15</td>
       <td>92.59</td>
     </tr>
     <tr>
@@ -3409,12 +2905,12 @@ print("RHU isolates")
     </tr>
     <tr>
       <th>REGION XI (DAVAO REGION)</th>
-      <td>10.53</td>
+      <td>5.26</td>
       <td>100.00</td>
     </tr>
     <tr>
       <th>REGION XII (SOCCSKSA RGEN)</th>
-      <td>46.67</td>
+      <td>40.00</td>
       <td>100.00</td>
     </tr>
     <tr>
@@ -3429,7 +2925,7 @@ print("RHU isolates")
     </tr>
     <tr>
       <th>REGION II (CAGAYAN VALLEY)</th>
-      <td>82.05</td>
+      <td>79.49</td>
       <td>100.00</td>
     </tr>
     <tr>
