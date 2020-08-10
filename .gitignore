@@ -2,3 +2,5 @@
 *.csv
 cleaned/
 cleaned/*
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
