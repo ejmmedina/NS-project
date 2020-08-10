@@ -7,16 +7,16 @@ This project aims to analyze to referral system among health units in the Philip
 
 
 ```python
-import pandas as pd 
-import numpy as np 
-from glob import glob 
+import pandas as pd
+import numpy as np
+from glob import glob
 import sys
 import locale
 from geopy.distance import vincenty
 import warnings
 
 warnings.filterwarnings("ignore")
-np.set_printoptions(threshold=sys.maxsize, precision=2) 
+np.set_printoptions(threshold=sys.maxsize, precision=2)
 pd.set_option('float_format', '{:,.2f}'.format)
 pd.set_option('display.max_rows', 1000)
 ```
@@ -32,13 +32,13 @@ Before performing the analysis, the data must be cleaned to standardize text and
 ```python
 files = glob('Geographic Coordinates/*.xlsx')
 cols = ['Health Facility Code Short', 'Facility Name', 'Health Facility Type',
-        'Region Name                                             ', 
-        'Province Name ', 'City/Municipality Name', 'Barangay Name', 
-        'Latitude', 'Longitude', 'Service Capability', 'Licensing Status', 
+        'Region Name                                             ',
+        'Province Name ', 'City/Municipality Name', 'Barangay Name',
+        'Latitude', 'Longitude', 'Service Capability', 'Licensing Status',
         'Bed Capacity']
 
 HF_list = pd.DataFrame()
-        
+
 for f in files:
     data = pd.read_excel(f, usecols=cols)
     HF_list = HF_list.append(data)
@@ -51,11 +51,11 @@ HF_list.isnull().sum() # Verify mismatched fields across different excel files
 
 
 ```python
-HF_list.columns = ['SHORT_HFCODE', 'HF_NAME', 'HF_TYPE', 'REGION', 'PROVINCE', 
-                  'MUNI_CITY', 'BRGY', 'LAT', 'LONG', 'SERVICE_CAP', 
+HF_list.columns = ['SHORT_HFCODE', 'HF_NAME', 'HF_TYPE', 'REGION', 'PROVINCE',
+                  'MUNI_CITY', 'BRGY', 'LAT', 'LONG', 'SERVICE_CAP',
                   'LICENSING', 'BED_CAP']
 
-str_cols = ['HF_NAME', 'HF_TYPE', 'REGION', 'PROVINCE', 'MUNI_CITY', 'BRGY', 
+str_cols = ['HF_NAME', 'HF_TYPE', 'REGION', 'PROVINCE', 'MUNI_CITY', 'BRGY',
             'SERVICE_CAP', 'LICENSING', 'BED_CAP']
 
 HF_list[str_cols] = HF_list[str_cols].fillna('UNKNOWN').apply(lambda x: x.str.upper().str.strip())
@@ -74,19 +74,19 @@ rhu = pd.read_excel('rhu2018.xlsx', sheet_name='MAIN', na_values='None')
 
 ```python
 str_cols = ['HF_NAME', 'REGION', 'PROVINCE', 'MUNI_CITY', 'BRGY',
-            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED', 'BRGYS', 
-            'SDN', 'SDN_NAME', 'REF1_NAME', 'REF1_SAMEPROV', 
+            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED', 'BRGYS',
+            'SDN', 'SDN_NAME', 'REF1_NAME', 'REF1_SAMEPROV',
             'REF1_REF1A', 'REF1A_SAMEPROV', 'REF2_NAME', 'REF3_NAME',  
-            'AMB_ACCESS', 'AMB_OWN', 'PHIC_ACC', 'PHIC_PACKAGES', 'PHIC_MCP', 
-            'PHIC_PCB1', 'PHIC_MALARIA', 'PHIC_TBDOTS', 'PHIC_ABTC', 
+            'AMB_ACCESS', 'AMB_OWN', 'PHIC_ACC', 'PHIC_PACKAGES', 'PHIC_MCP',
+            'PHIC_PCB1', 'PHIC_MALARIA', 'PHIC_TBDOTS', 'PHIC_ABTC',
             'PHIC_NCP', 'PHIC_OTH']
 code_cols = ['id', 'REF1_CODE', 'REF2_CODE', 'REF3_CODE']
 float_cols = ['REF1_DIST', 'REF1_TRAVEL', 'REF2_DIST', 'REF2_TRAVEL',
              'REF3_DIST', 'REF3_TRAVEL']
-# int_cols = ['id', 'BHS_COUNT','CATCHMENT', 'REF1_CODE', 'REF2_CODE', 
-#             'REF3_CODE',  'MD_NO', 'MD_AUG', 'MD_TOTAL','MD_FT', 'MD_PT', 
-#             'MD_VISIT', 'RN_NO', 'RN_AUG', 'RN_TOTAL', 'RN_FT', 'RN_PT', 
-#             'RN_VISIT', 'MW_NO', 'MW_AUG', 'MW_TOTAL', 'MW_FT', 'MW_PT', 
+# int_cols = ['id', 'BHS_COUNT','CATCHMENT', 'REF1_CODE', 'REF2_CODE',
+#             'REF3_CODE',  'MD_NO', 'MD_AUG', 'MD_TOTAL','MD_FT', 'MD_PT',
+#             'MD_VISIT', 'RN_NO', 'RN_AUG', 'RN_TOTAL', 'RN_FT', 'RN_PT',
+#             'RN_VISIT', 'MW_NO', 'MW_AUG', 'MW_TOTAL', 'MW_FT', 'MW_PT',
 #             'MW_VISIT']
 
 rhu[str_cols] = rhu[str_cols].apply(lambda x: x.str.upper().str.strip())
@@ -136,11 +136,11 @@ rhu3 = rhu.copy()
 
 ```python
 cols = ['id', 'HF_CODE', 'SHORT_HFCODE', 'HF_NAME', 'REGION', 'PROVINCE', 'MUNI_CITY', 'BRGY',
-            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED', 'BRGYS', 
-            'SDN', 'SDN_NAME', 'REF1_NAME', 'REF1_SAMEPROV', 
+            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED', 'BRGYS',
+            'SDN', 'SDN_NAME', 'REF1_NAME', 'REF1_SAMEPROV',
             'REF1_REF1A', 'REF1A_SAMEPROV', 'REF2_NAME', 'REF3_NAME',  
-            'AMB_ACCESS', 'AMB_OWN', 'PHIC_ACC', 'PHIC_PACKAGES', 'PHIC_MCP', 
-            'PHIC_PCB1', 'PHIC_MALARIA', 'PHIC_TBDOTS', 'PHIC_ABTC', 
+            'AMB_ACCESS', 'AMB_OWN', 'PHIC_ACC', 'PHIC_PACKAGES', 'PHIC_MCP',
+            'PHIC_PCB1', 'PHIC_MALARIA', 'PHIC_TBDOTS', 'PHIC_ABTC',
             'PHIC_NCP', 'PHIC_OTH', 'REF1_CODE', 'REF1_DIST', 'REF1_TRAVEL',
             'REF2_CODE', 'REF2_DIST', 'REF2_TRAVEL',
             'REF3_CODE', 'REF3_DIST', 'REF3_TRAVEL']
@@ -221,7 +221,7 @@ temp.head()
 # Out of all the mapped referred facilities, the closest facility is used as the actual referred facility
 # Slight pre-processing: "place" the health facilities without coordinates to southwest of southwest Philippine boundary (lat_min - 10, long_min - 20) or northeast of northeast Philippine boundary
 temp_dict = pd.DataFrame(temp.apply(lambda x: min([(vincenty((latlong_dict['LAT'][x['SHORT_HFCODE']] if latlong_dict['LAT'][x['SHORT_HFCODE']]==latlong_dict['LAT'][x['SHORT_HFCODE']] else lat_min-10,
-                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20), 
+                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODE']], key=lambda x: x[0]), axis=1).tolist()).set_index(2).to_dict()
 
@@ -239,7 +239,7 @@ rhu2.loc[rhu2['REF2_CODE']==0, 'REF_CODE'] = rhu2[rhu2['REF2_CODE']==0]['REF2_NA
 
 temp = rhu2[['SHORT_HFCODE', 'REF_CODE']].dropna().copy()
 temp_dict = pd.DataFrame(temp.apply(lambda x: min([(vincenty((latlong_dict['LAT'][x['SHORT_HFCODE']] if latlong_dict['LAT'][x['SHORT_HFCODE']]==latlong_dict['LAT'][x['SHORT_HFCODE']] else lat_min-10,
-                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20), 
+                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODE']], key=lambda x: x[0]), axis=1).tolist()).set_index(2).to_dict()
 
@@ -255,7 +255,7 @@ rhu3.loc[rhu3['REF3_CODE']==0, 'REF_CODE'] = rhu3[rhu3['REF3_CODE']==0]['REF3_NA
 
 temp = rhu3[['SHORT_HFCODE', 'REF_CODE']].dropna().copy()
 temp_dict = pd.DataFrame(temp.apply(lambda x: min([(vincenty((latlong_dict['LAT'][x['SHORT_HFCODE']] if latlong_dict['LAT'][x['SHORT_HFCODE']]==latlong_dict['LAT'][x['SHORT_HFCODE']] else lat_min-10,
-                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20), 
+                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODE']], key=lambda x: x[0]), axis=1).tolist()).set_index(2).to_dict()
 
@@ -417,7 +417,7 @@ B = rhu_edges.boxplot('DIST', return_type='both')
 ```
 
 
-![png](output_38_0.png)
+![png](output_img/output_38_0.png)
 
 
 
@@ -453,7 +453,7 @@ mean_dist_city = rhu_edges.groupby('muni_city')['DIST'].median().to_dict()
 
 imputed_muni = ~(rhu_edges.loc[rhu_edges['DIST'].isnull(), 'muni_city'].map(mean_dist_city).isnull())
 imputed_muni = imputed_muni[imputed_muni].index
-rhu_edges.loc[imputed_muni, "IMPUTED"] = "MUNI" 
+rhu_edges.loc[imputed_muni, "IMPUTED"] = "MUNI"
 rhu_edges.loc[rhu_edges['DIST'].isnull(), 'DIST'] = rhu_edges.loc[rhu_edges['DIST'].isnull(), 'muni_city'].map(mean_dist_city)
 ```
 
@@ -484,7 +484,7 @@ rhu_edges['DIST'].isnull().sum()
 
 
 
-If after all these, the referring facilities still do not have distance information, the connection between the facilities is dropped. 
+If after all these, the referring facilities still do not have distance information, the connection between the facilities is dropped.
 
 
 ```python
@@ -514,7 +514,7 @@ The referrals above are based on actual data, i.e. actual referrals from facilit
 n = 3 #num of nearest neighbors to connect
 temp = rhu_edges[['SHORT_HFCODE', 'REF_CODES']].dropna().drop_duplicates(subset='SHORT_HFCODE').copy()
 df_neighbors = pd.DataFrame(temp.apply(lambda x: sorted([(vincenty((latlong_dict['LAT'][x['SHORT_HFCODE']] if latlong_dict['LAT'][x['SHORT_HFCODE']]==latlong_dict['LAT'][x['SHORT_HFCODE']] else lat_min-10,
-                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20), 
+                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODES'] if i!=x['SHORT_HFCODE']], key=lambda x: x[0])[:n], axis=1).tolist())#.set_index(2).to_dict()
 ```
@@ -754,7 +754,7 @@ bhs = pd.read_excel('bhs2018.xlsx', sheet_name='MAIN', na_values='None')
 
 ```python
 str_cols = ['HF_NAME', 'REGION', 'PROVINCE', 'MUNI_CITY', 'BRGY',
-            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED', 
+            'STREET_NAME', 'BUILDING', 'FACILITY_HEAD', 'DETACHED',
             'BRGYS', 'RHU_NAME', 'RHU_SAME_CTY', 'RHU_NOTSAME_CTY',
             'AMB_ACCESS']
 code_cols = ['id', 'RHU_CODE']
@@ -789,7 +789,7 @@ bhs.loc[bhs['RHU_CODE']==0, 'REF_CODE'] = bhs[bhs['RHU_CODE']==0]['RHU_NAME'].ma
 ```python
 temp = bhs[['SHORT_HFCODE', 'REF_CODE']].dropna().copy()
 temp_dict = pd.DataFrame(temp.apply(lambda x: min([(vincenty((latlong_dict['LAT'][x['SHORT_HFCODE']] if latlong_dict['LAT'][x['SHORT_HFCODE']]==latlong_dict['LAT'][x['SHORT_HFCODE']] else lat_min-10,
-                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20), 
+                                                  latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODE']], key=lambda x: x[0]), axis=1).tolist()).set_index(2).to_dict()
 ```
@@ -855,7 +855,7 @@ B = bhs.boxplot('DIST', return_type='both')
 ```
 
 
-![png](output_75_0.png)
+![png](output_img/output_75_0.png)
 
 
 
@@ -893,7 +893,7 @@ mean_dist_city = bhs.groupby('muni_city')['DIST'].mean().to_dict()
 
 imputed_muni = ~(bhs.loc[bhs['DIST'].isnull(), 'muni_city'].map(mean_dist_city).isnull())
 imputed_muni = imputed_muni[imputed_muni].index
-bhs.loc[imputed_muni, "IMPUTED"] = "MUNI" 
+bhs.loc[imputed_muni, "IMPUTED"] = "MUNI"
 bhs.loc[bhs['DIST'].isnull(), 'DIST'] = bhs.loc[bhs['DIST'].isnull(), 'muni_city'].map(mean_dist_city)
 ```
 
@@ -1066,7 +1066,7 @@ edge_list.to_excel('edge_list.xlsx', index=False)
 
 ## Network Analysis
 
-Using the facilities as nodes and the referral as edges, a tripartite network of BHS, RHU, and hospitals is created. The characteristics of the healthcare provider network for different regions are characterized and explored in this section. The main metric used in the analysis is degree and path length. 
+Using the facilities as nodes and the referral as edges, a tripartite network of BHS, RHU, and hospitals is created. The characteristics of the healthcare provider network for different regions are characterized and explored in this section. The main metric used in the analysis is degree and path length.
 
 
 ```python
@@ -1526,7 +1526,7 @@ ax.set_xticklabels(labels, ha='right');
 ```
 
 
-![png](output_109_0.png)
+![png](output_img/output_109_0.png)
 
 
 
@@ -2209,7 +2209,7 @@ ax.set_xticklabels(labels, ha='right');
 ```
 
 
-![png](output_121_0.png)
+![png](output_img/output_121_0.png)
 
 
 
@@ -2448,7 +2448,7 @@ bhs_rhu_spl
 
 ```python
 fig, ax = plt.subplots(figsize=(10,8))
-ax.plot(deg_outlier_rhu['mean'], bhs_rhu_spl['mean'], 'o', color='deepskyblue', 
+ax.plot(deg_outlier_rhu['mean'], bhs_rhu_spl['mean'], 'o', color='deepskyblue',
         markersize='15')
 for i,j,k in zip(deg_outlier_rhu['mean'].values, bhs_rhu_spl['mean'].values, list(deg_outlier_rhu.index)):
     ax.text(i,j,k, fontsize=14)
@@ -2457,7 +2457,7 @@ ax.set_ylabel("Average shortest path length (BHS->RHU)", fontsize=14);
 ```
 
 
-![png](output_132_0.png)
+![png](output_img/output_132_0.png)
 
 
 ##### RHU -> HOSP path
@@ -2673,9 +2673,9 @@ rhu_hosp_spl
 
 ```python
 fig, ax = plt.subplots(figsize=(10,8))
-ax.plot(deg_outlier['mean'], rhu_hosp_spl['mean'], 'o', color='deepskyblue', 
+ax.plot(deg_outlier['mean'], rhu_hosp_spl['mean'], 'o', color='deepskyblue',
         markersize='15')
-for i,j,k in zip(deg_outlier['mean'].values, rhu_hosp_spl['mean'].values, 
+for i,j,k in zip(deg_outlier['mean'].values, rhu_hosp_spl['mean'].values,
                  list(deg_outlier.index)):
     ax.text(i,j,k, fontsize=14)
 ax.set_xlabel("Degree Outlierness (Hosp)", fontsize=14)
@@ -2685,7 +2685,7 @@ ax.set_ylabel("Average shortest path length (RHU->Hosp)", fontsize=14);
 ```
 
 
-![png](output_138_0.png)
+![png](output_img/output_138_0.png)
 
 
 ##### BHS -> HOSP path
@@ -2901,7 +2901,7 @@ bhs_hosp_spl
 
 ```python
 fig, ax = plt.subplots(figsize=(10,8))
-ax.plot(deg_outlier['mean'], bhs_hosp_spl['mean'], 'o', color='deepskyblue', 
+ax.plot(deg_outlier['mean'], bhs_hosp_spl['mean'], 'o', color='deepskyblue',
         markersize='15')
 for i,j,k in zip(deg_outlier['mean'].values, bhs_hosp_spl['mean'].values, list(deg_outlier.index)):
     ax.text(i,j,k, fontsize=14)
@@ -2913,7 +2913,7 @@ ax.set_ylabel("Average shortest path length (BHS->Hosp)", fontsize=14);
 ```
 
 
-![png](output_144_0.png)
+![png](output_img/output_144_0.png)
 
 
 ## Simulations
@@ -3257,7 +3257,7 @@ for region in ['NATIONAL CAPITAL REGION (NCR)', 'REGION VIII (EASTERN VISAYAS)']
     df_rem_hosps.loc[region, "0.5%"] = remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / remaining_hosps[0]
     df_isolates.loc[region, "0.05%"] = num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / num_isolates[-1]
     df_isolates.loc[region, "0.5%"] = num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / num_isolates[-1]
-    
+
 #     print("At 0.05%, remaining hosps are", remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / remaining_hosps[0], region)
 #     print("At 0.5%, remaining hosps are", remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / remaining_hosps[0], region)
 #     print("At 0.05%, the isolated RHUs are", num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / num_isolates[-1], region)
@@ -3284,7 +3284,7 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_151_1.png)
+![png](output_img/output_151_1.png)
 
 
 
@@ -3337,7 +3337,7 @@ for region in nodes['REGION'].unique():
     df_rem_hosps.loc[region, "0.5%"] = remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / remaining_hosps[0]
     df_isolates.loc[region, "0.05%"] = num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / num_isolates[-1]
     df_isolates.loc[region, "0.5%"] = num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / num_isolates[-1]
-    
+
 #     print("At 0.05%, remaining hosps are", remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / remaining_hosps[0], region)
 #     print("At 0.5%, remaining hosps are", remaining_hosps[np.where(pop_prop * np.arange(num_iter+1)==0.005)[0][0]] / remaining_hosps[0], region)
 #     print("At 0.05%, the isolated RHUs are", num_isolates[np.where(pop_prop * np.arange(num_iter+1)==0.0005)[0][0]] / num_isolates[-1], region)
@@ -3364,7 +3364,7 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_152_1.png)
+![png](output_img/output_152_1.png)
 
 
 
@@ -3374,7 +3374,7 @@ print("Remaining hospitals")
 ```
 
     Remaining hospitals
-    
+
 
 
 
@@ -3579,7 +3579,7 @@ print("RHU isolates")
 ```
 
     RHU isolates
-    
+
 
 
 
@@ -3774,5 +3774,3 @@ print("RHU isolates")
                         <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row16_col1" class="data row16 col1" >100</td>
             </tr>
     </tbody></table>
-
-
