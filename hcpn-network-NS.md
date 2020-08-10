@@ -163,6 +163,19 @@ temp.head()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -288,6 +301,19 @@ HF_list[['SHORT_HFCODE', 'LAT', 'LONG']].describe()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -512,6 +538,19 @@ rhu_edges[['SHORT_HFCODE', 'REF_CODE', 'DIST', 'IMPUTED']]
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -627,6 +666,19 @@ rhu_edges.describe()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -716,7 +768,7 @@ bhs[str_cols] = bhs[str_cols].apply(lambda x: x.str.upper().str.strip())
 bhs[code_cols] = bhs[code_cols].fillna(0).astype(int)
 bhs[float_cols] = bhs[float_cols].astype(float)
 
-bhs[str_col] = bhs[str_col].fillna('UNKNOWN')
+bhs[str_cols] = bhs[str_cols].fillna('UNKNOWN')
 bhs['SHORT_HFCODE'] = bhs['HF_CODE'].apply(lambda x: int(x[-6:]))
 bhs.to_excel('cleaned/bhs_cleaned.xlsx')
 ```
@@ -740,19 +792,9 @@ temp_dict = pd.DataFrame(temp.apply(lambda x: min([(vincenty((latlong_dict['LAT'
                                                   latlong_dict['LONG'][x['SHORT_HFCODE']] if latlong_dict['LONG'][x['SHORT_HFCODE']]==latlong_dict['LONG'][x['SHORT_HFCODE']] else long_min-20),
                                                  (latlong_dict['LAT'][i] if latlong_dict['LAT'][i]==latlong_dict['LAT'][i] else lat_max+10,
                                                   latlong_dict['LONG'][i] if latlong_dict['LONG'][i]==latlong_dict['LONG'][i] else long_max+20)).km, i, x['SHORT_HFCODE']) for i in x['REF_CODE']], key=lambda x: x[0]), axis=1).tolist()).set_index(2).to_dict()
+
+bhs['REF_CODE'] = bhs['SHORT_HFCODE'].map(temp_dict[1])
 ```
-
-
-```python
-bhs['DIST'].isnull().sum()
-```
-
-
-
-
-    17
-
-
 
 
 ```python
@@ -803,7 +845,7 @@ B = bhs.boxplot('DIST', return_type='both')
 ```
 
 
-![png](output_img/output_75_0.png)
+![png](output_img/output_74_0.png)
 
 
 
@@ -819,7 +861,7 @@ outliers
 
 
 
-    [0.00011063857573315692, 15.946669430143814]
+    [0.0024470114519412256, 16.988283224538524]
 
 
 
@@ -865,7 +907,7 @@ bhs['DIST'].isnull().sum()
 
 
 
-    55
+    6
 
 
 
@@ -894,6 +936,19 @@ edge_list
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -948,43 +1003,43 @@ edge_list
       <td>...</td>
     </tr>
     <tr>
-      <th>19775</th>
-      <td>3.89</td>
-      <td>PROV</td>
-      <td>5,828.00</td>
-      <td>36080</td>
+      <th>19297</th>
+      <td>8.88</td>
+      <td>NaN</td>
+      <td>7,207.00</td>
+      <td>17805</td>
     </tr>
     <tr>
-      <th>19776</th>
-      <td>3.89</td>
-      <td>PROV</td>
-      <td>3,257.00</td>
-      <td>31557</td>
+      <th>19325</th>
+      <td>3.56</td>
+      <td>NaN</td>
+      <td>79.00</td>
+      <td>17893</td>
     </tr>
     <tr>
-      <th>19780</th>
-      <td>3.89</td>
-      <td>PROV</td>
-      <td>261.00</td>
-      <td>31561</td>
+      <th>19345</th>
+      <td>0.65</td>
+      <td>NaN</td>
+      <td>27,529.00</td>
+      <td>27530</td>
     </tr>
     <tr>
-      <th>19781</th>
-      <td>3.89</td>
-      <td>PROV</td>
-      <td>2,610.00</td>
-      <td>36436</td>
+      <th>19367</th>
+      <td>1.68</td>
+      <td>NaN</td>
+      <td>169.00</td>
+      <td>29236</td>
     </tr>
     <tr>
-      <th>19782</th>
-      <td>3.89</td>
-      <td>PROV</td>
-      <td>2,610.00</td>
-      <td>36437</td>
+      <th>19368</th>
+      <td>12.67</td>
+      <td>NaN</td>
+      <td>169.00</td>
+      <td>29238</td>
     </tr>
   </tbody>
 </table>
-<p>30094 rows × 4 columns</p>
+<p>12793 rows × 4 columns</p>
 </div>
 
 
@@ -1103,342 +1158,166 @@ df_deg['Region'] = df_deg['Region'].map(region_map)
 ```python
 (df_deg.groupby('Region')['Degree']
  .agg(['min', 'max', 'mean', 'median', 'count']).sort_values(by='Region')
- [['max', 'mean', 'median', 'count']]
-.style
-#  .highlight_max(subset='mean', color='lightskyblue')
-# .highlight_min(subset=['mean', 'median', 'count'], axis=0, color='lightskyblue')
-.background_gradient(cmap='Blues'))
+ [['max', 'mean', 'median', 'count']])
 ```
 
 
 
 
-<style  type="text/css" >
-    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col0 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col1 {
-            background-color:  #f6faff;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col2 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col3 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col0 {
-            background-color:  #ebf3fb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col1 {
-            background-color:  #e0ecf8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col2 {
-            background-color:  #e3eef8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col3 {
-            background-color:  #91c3de;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col0 {
-            background-color:  #a9cfe5;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col1 {
-            background-color:  #a6cee4;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col2 {
-            background-color:  #cadef0;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col3 {
-            background-color:  #74b3d8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col0 {
-            background-color:  #c2d9ee;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col1 {
-            background-color:  #dfebf7;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col2 {
-            background-color:  #e3eef8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col3 {
-            background-color:  #7db8da;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col0 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col1 {
-            background-color:  #81badb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col2 {
-            background-color:  #abd0e6;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col3 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col0 {
-            background-color:  #084285;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col1 {
-            background-color:  #d0e1f2;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col2 {
-            background-color:  #dae8f6;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col3 {
-            background-color:  #083573;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col0 {
-            background-color:  #bfd8ed;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col1 {
-            background-color:  #eaf3fb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col2 {
-            background-color:  #eaf3fb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col3 {
-            background-color:  #a1cbe2;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col0 {
-            background-color:  #cbdef1;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col1 {
-            background-color:  #bed8ec;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col2 {
-            background-color:  #bfd8ed;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col3 {
-            background-color:  #e0ecf8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col0 {
-            background-color:  #9cc9e1;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col1 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col2 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col3 {
-            background-color:  #3383be;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col0 {
-            background-color:  #b0d2e7;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col1 {
-            background-color:  #cadef0;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col2 {
-            background-color:  #dae8f6;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col3 {
-            background-color:  #64a9d3;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col0 {
-            background-color:  #58a1cf;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col1 {
-            background-color:  #d5e5f4;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col2 {
-            background-color:  #e3eef8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col3 {
-            background-color:  #2676b8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col0 {
-            background-color:  #b5d4e9;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col1 {
-            background-color:  #dae8f6;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col2 {
-            background-color:  #dae8f6;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col3 {
-            background-color:  #3383be;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col0 {
-            background-color:  #083d7f;
-            color:  #f1f1f1;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col1 {
-            background-color:  #97c6df;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col2 {
-            background-color:  #bfd8ed;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col3 {
-            background-color:  #74b3d8;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col0 {
-            background-color:  #d4e4f4;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col1 {
-            background-color:  #e8f1fa;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col2 {
-            background-color:  #e7f0fa;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col3 {
-            background-color:  #91c3de;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col0 {
-            background-color:  #eef5fc;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col1 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col2 {
-            background-color:  #eff6fc;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col3 {
-            background-color:  #d3e4f3;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col0 {
-            background-color:  #d4e4f4;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col1 {
-            background-color:  #edf4fc;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col2 {
-            background-color:  #f3f8fe;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col3 {
-            background-color:  #eaf2fb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col0 {
-            background-color:  #e3eef9;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col1 {
-            background-color:  #f1f7fd;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col2 {
-            background-color:  #eaf3fb;
-            color:  #000000;
-        }    #T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col3 {
-            background-color:  #d3e4f3;
-            color:  #000000;
-        }</style><table id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >max</th>        <th class="col_heading level0 col1" >mean</th>        <th class="col_heading level0 col2" >median</th>        <th class="col_heading level0 col3" >count</th>    </tr>    <tr>        <th class="index_name level0" >Region</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row0" class="row_heading level0 row0" >ARMM</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col0" class="data row0 col0" >24</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col1" class="data row0 col1" >6.94444</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col2" class="data row0 col2" >4.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row0_col3" class="data row0 col3" >18</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row1" class="row_heading level0 row1" >CAR</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col0" class="data row1 col0" >32</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col1" class="data row1 col1" >9.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col2" class="data row1 col2" >7</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row1_col3" class="data row1 col3" >36</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row2" class="row_heading level0 row2" >I</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col0" class="data row2 col0" >68</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col1" class="data row2 col1" >14.9487</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col2" class="data row2 col2" >10</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row2_col3" class="data row2 col3" >39</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row3" class="row_heading level0 row3" >II</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col0" class="data row3 col0" >58</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col1" class="data row3 col1" >9.65789</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col2" class="data row3 col2" >7</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row3_col3" class="data row3 col3" >38</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row4" class="row_heading level0 row4" >III</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col0" class="data row4 col0" >153</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col1" class="data row4 col1" >17.2097</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col2" class="data row4 col2" >12.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row4_col3" class="data row4 col3" >62</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row5" class="row_heading level0 row5" >IV-A</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col0" class="data row5 col0" >144</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col1" class="data row5 col1" >11.5082</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col2" class="data row5 col2" >8</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row5_col3" class="data row5 col3" >61</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row6" class="row_heading level0 row6" >IV-B</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col0" class="data row6 col0" >59</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col1" class="data row6 col1" >8.32353</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col2" class="data row6 col2" >6</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row6_col3" class="data row6 col3" >34</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row7" class="row_heading level0 row7" >IX</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col0" class="data row7 col0" >53</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col1" class="data row7 col1" >13.1739</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col2" class="data row7 col2" >11</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row7_col3" class="data row7 col3" >23</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row8" class="row_heading level0 row8" >NCR</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col0" class="data row8 col0" >73</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col1" class="data row8 col1" >29.9167</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col2" class="data row8 col2" >28.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row8_col3" class="data row8 col3" >48</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row9" class="row_heading level0 row9" >V</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col0" class="data row9 col0" >65</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col1" class="data row9 col1" >12.0976</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col2" class="data row9 col2" >8</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row9_col3" class="data row9 col3" >41</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row10" class="row_heading level0 row10" >VI</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col0" class="data row10 col0" >96</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col1" class="data row10 col1" >10.84</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col2" class="data row10 col2" >7</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row10_col3" class="data row10 col3" >50</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row11" class="row_heading level0 row11" >VII</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col0" class="data row11 col0" >63</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col1" class="data row11 col1" >10.2292</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col2" class="data row11 col2" >8</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row11_col3" class="data row11 col3" >48</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row12" class="row_heading level0 row12" >VIII</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col0" class="data row12 col0" >146</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col1" class="data row12 col1" >15.9231</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col2" class="data row12 col2" >11</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row12_col3" class="data row12 col3" >39</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row13" class="row_heading level0 row13" >X</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col0" class="data row13 col0" >47</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col1" class="data row13 col1" >8.58333</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col2" class="data row13 col2" >6.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row13_col3" class="data row13 col3" >36</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row14" class="row_heading level0 row14" >XI</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col0" class="data row14 col0" >30</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col1" class="data row14 col1" >6.84615</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col2" class="data row14 col2" >5.5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row14_col3" class="data row14 col3" >26</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row15" class="row_heading level0 row15" >XII</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col0" class="data row15 col0" >47</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col1" class="data row15 col1" >8.09524</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col2" class="data row15 col2" >5</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row15_col3" class="data row15 col3" >21</td>
-            </tr>
-            <tr>
-                        <th id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6level0_row16" class="row_heading level0 row16" >XIII</th>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col0" class="data row16 col0" >37</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col1" class="data row16 col1" >7.57692</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col2" class="data row16 col2" >6</td>
-                        <td id="T_e2f54cae_6dd2_11ea_8ccc_9828a631b9e6row16_col3" class="data row16 col3" >26</td>
-            </tr>
-    </tbody></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>max</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ARMM</th>
+      <td>24</td>
+      <td>6.89</td>
+      <td>4.50</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>CAR</th>
+      <td>32</td>
+      <td>9.42</td>
+      <td>6.50</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>68</td>
+      <td>15.97</td>
+      <td>10.00</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>II</th>
+      <td>58</td>
+      <td>10.26</td>
+      <td>7.00</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>III</th>
+      <td>153</td>
+      <td>18.53</td>
+      <td>13.00</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>IV-A</th>
+      <td>144</td>
+      <td>12.16</td>
+      <td>8.00</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>IV-B</th>
+      <td>59</td>
+      <td>8.52</td>
+      <td>6.00</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>IX</th>
+      <td>53</td>
+      <td>14.33</td>
+      <td>11.00</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>NCR</th>
+      <td>73</td>
+      <td>31.84</td>
+      <td>29.00</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>62</td>
+      <td>11.69</td>
+      <td>8.00</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>96</td>
+      <td>10.76</td>
+      <td>7.00</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>VII</th>
+      <td>59</td>
+      <td>10.47</td>
+      <td>8.00</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>VIII</th>
+      <td>146</td>
+      <td>15.79</td>
+      <td>11.00</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td>47</td>
+      <td>8.50</td>
+      <td>6.00</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>XI</th>
+      <td>30</td>
+      <td>7.90</td>
+      <td>6.00</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>XII</th>
+      <td>46</td>
+      <td>9.17</td>
+      <td>5.50</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>XIII</th>
+      <td>37</td>
+      <td>7.72</td>
+      <td>6.00</td>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -1461,7 +1340,7 @@ ax.set_xticklabels(labels, ha='right');
 ```
 
 
-![png](output_img/output_109_0.png)
+![png](output_img/output_108_0.png)
 
 
 
@@ -1475,6 +1354,19 @@ deg_outlier
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1497,138 +1389,138 @@ deg_outlier
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>6.000</td>
-      <td>6.000</td>
-      <td>6.000000</td>
-      <td>6.000</td>
+      <td>4.88</td>
+      <td>4.88</td>
+      <td>4.88</td>
+      <td>4.88</td>
       <td>1</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>3.750</td>
-      <td>10.750</td>
-      <td>7.416667</td>
-      <td>7.750</td>
-      <td>3</td>
+      <td>1.62</td>
+      <td>12.62</td>
+      <td>7.38</td>
+      <td>7.62</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>1.750</td>
-      <td>39.750</td>
-      <td>27.000000</td>
-      <td>33.250</td>
+      <td>1.38</td>
+      <td>39.38</td>
+      <td>26.62</td>
+      <td>32.88</td>
       <td>4</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>0.625</td>
-      <td>34.625</td>
-      <td>13.625000</td>
-      <td>5.625</td>
+      <td>3.75</td>
+      <td>37.75</td>
+      <td>16.75</td>
+      <td>8.75</td>
       <td>3</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>4.500</td>
-      <td>123.500</td>
-      <td>38.833333</td>
-      <td>27.500</td>
+      <td>6.50</td>
+      <td>125.50</td>
+      <td>40.17</td>
+      <td>28.00</td>
       <td>6</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>8.000</td>
-      <td>123.000</td>
-      <td>39.500000</td>
-      <td>13.500</td>
+      <td>8.00</td>
+      <td>123.00</td>
+      <td>39.50</td>
+      <td>13.50</td>
       <td>4</td>
     </tr>
     <tr>
       <th>IV-B</th>
-      <td>2.000</td>
-      <td>45.000</td>
-      <td>14.250000</td>
-      <td>5.000</td>
+      <td>2.00</td>
+      <td>45.00</td>
+      <td>14.25</td>
+      <td>5.00</td>
       <td>4</td>
     </tr>
     <tr>
       <th>IX</th>
-      <td>16.000</td>
-      <td>16.000</td>
-      <td>16.000000</td>
-      <td>16.000</td>
+      <td>17.00</td>
+      <td>17.00</td>
+      <td>17.00</td>
+      <td>17.00</td>
       <td>1</td>
     </tr>
     <tr>
       <th>NCR</th>
-      <td>4.875</td>
-      <td>4.875</td>
-      <td>4.875000</td>
-      <td>4.875</td>
+      <td>4.50</td>
+      <td>4.50</td>
+      <td>4.50</td>
+      <td>4.50</td>
       <td>1</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>12.000</td>
-      <td>45.000</td>
-      <td>31.250000</td>
-      <td>34.000</td>
-      <td>4</td>
+      <td>12.75</td>
+      <td>42.75</td>
+      <td>32.75</td>
+      <td>42.75</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>VI</th>
-      <td>7.625</td>
-      <td>76.625</td>
-      <td>27.375000</td>
-      <td>12.625</td>
+      <td>7.62</td>
+      <td>76.62</td>
+      <td>27.38</td>
+      <td>12.62</td>
       <td>4</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>1.625</td>
-      <td>41.625</td>
-      <td>14.625000</td>
-      <td>7.625</td>
+      <td>2.00</td>
+      <td>38.00</td>
+      <td>14.00</td>
+      <td>8.00</td>
       <td>4</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>0.250</td>
-      <td>121.250</td>
-      <td>34.750000</td>
-      <td>8.750</td>
-      <td>4</td>
+      <td>0.75</td>
+      <td>123.75</td>
+      <td>29.95</td>
+      <td>4.75</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>X</th>
-      <td>17.000</td>
-      <td>32.000</td>
-      <td>24.500000</td>
-      <td>24.500</td>
+      <td>17.00</td>
+      <td>32.00</td>
+      <td>24.50</td>
+      <td>24.50</td>
       <td>2</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>8.000</td>
-      <td>10.000</td>
-      <td>9.000000</td>
-      <td>9.000</td>
+      <td>11.50</td>
+      <td>13.50</td>
+      <td>12.50</td>
+      <td>12.50</td>
       <td>2</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>26.500</td>
-      <td>26.500</td>
-      <td>26.500000</td>
-      <td>26.500</td>
+      <td>25.12</td>
+      <td>25.12</td>
+      <td>25.12</td>
+      <td>25.12</td>
       <td>1</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>2.625</td>
-      <td>23.625</td>
-      <td>13.125000</td>
-      <td>13.125</td>
+      <td>2.00</td>
+      <td>23.00</td>
+      <td>12.50</td>
+      <td>12.50</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -1680,342 +1572,166 @@ df_deg['Region'] = df_deg['Region'].map(region_map)
 ```python
 (df_deg.groupby('Region')['Degree']
  .agg(['min', 'max', 'mean', 'median', 'count']).sort_values(by='Region')
- [['max', 'mean', 'median', 'count']]
-.style
-#  .highlight_max(subset='mean', color='lightskyblue')
-# .highlight_min(subset=['mean', 'median', 'count'], axis=0, color='lightskyblue')
-.background_gradient(cmap='Blues'))
+ [['max', 'mean', 'median', 'count']])
 ```
 
 
 
 
-<style  type="text/css" >
-    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col0 {
-            background-color:  #8fc2de;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col1 {
-            background-color:  #cee0f2;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col2 {
-            background-color:  #ecf4fb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col3 {
-            background-color:  #e6f0f9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col0 {
-            background-color:  #e3eef9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col1 {
-            background-color:  #84bcdb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col2 {
-            background-color:  #abd0e6;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col3 {
-            background-color:  #d9e7f5;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col0 {
-            background-color:  #2d7dbb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col1 {
-            background-color:  #549fcd;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col2 {
-            background-color:  #99c7e0;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col3 {
-            background-color:  #b5d4e9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col0 {
-            background-color:  #7fb9da;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col1 {
-            background-color:  #1561a9;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col2 {
-            background-color:  #4695c8;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col3 {
-            background-color:  #dfecf7;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col0 {
-            background-color:  #eff6fc;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col1 {
-            background-color:  #9dcae1;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col2 {
-            background-color:  #bdd7ec;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col3 {
-            background-color:  #3c8cc3;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col0 {
-            background-color:  #2272b6;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col1 {
-            background-color:  #4e9acb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col2 {
-            background-color:  #82bbdb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col3 {
-            background-color:  #92c4de;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col0 {
-            background-color:  #5ba3d0;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col1 {
-            background-color:  #125ea6;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col2 {
-            background-color:  #4695c8;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col3 {
-            background-color:  #e4eff9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col0 {
-            background-color:  #abd0e6;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col1 {
-            background-color:  #77b5d9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col2 {
-            background-color:  #a3cce3;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col3 {
-            background-color:  #dae8f6;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col0 {
-            background-color:  #ebf3fb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col1 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col2 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col3 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col0 {
-            background-color:  #a5cde3;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col1 {
-            background-color:  #57a0ce;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col2 {
-            background-color:  #82bbdb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col3 {
-            background-color:  #c7dcef;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col0 {
-            background-color:  #6fb0d7;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col1 {
-            background-color:  #2979b9;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col2 {
-            background-color:  #58a1cf;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col3 {
-            background-color:  #bcd7eb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col0 {
-            background-color:  #b8d5ea;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col1 {
-            background-color:  #3787c0;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col2 {
-            background-color:  #6aaed6;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col3 {
-            background-color:  #bdd7ec;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col0 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col1 {
-            background-color:  #bed8ec;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col2 {
-            background-color:  #ccdff1;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col3 {
-            background-color:  #a9cfe5;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col0 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col1 {
-            background-color:  #3c8cc3;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col2 {
-            background-color:  #6aaed6;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col3 {
-            background-color:  #dfebf7;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col0 {
-            background-color:  #9fcae1;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col1 {
-            background-color:  #083d7f;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col2 {
-            background-color:  #084d96;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col3 {
-            background-color:  #eef5fc;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col0 {
-            background-color:  #61a7d2;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col1 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col2 {
-            background-color:  #08306b;
-            color:  #f1f1f1;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col3 {
-            background-color:  #f7fbff;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col0 {
-            background-color:  #c4daee;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col1 {
-            background-color:  #bcd7eb;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col2 {
-            background-color:  #d1e2f3;
-            color:  #000000;
-        }    #T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col3 {
-            background-color:  #f0f6fd;
-            color:  #000000;
-        }</style><table id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >max</th>        <th class="col_heading level0 col1" >mean</th>        <th class="col_heading level0 col2" >median</th>        <th class="col_heading level0 col3" >count</th>    </tr>    <tr>        <th class="index_name level0" >Region</th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>        <th class="blank" ></th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row0" class="row_heading level0 row0" >ARMM</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col0" class="data row0 col0" >43</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col1" class="data row0 col1" >3.72368</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col2" class="data row0 col2" >1</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row0_col3" class="data row0 col3" >76</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row1" class="row_heading level0 row1" >CAR</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col0" class="data row1 col0" >27</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col1" class="data row1 col1" >7.54082</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col2" class="data row1 col2" >6</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row1_col3" class="data row1 col3" >98</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row2" class="row_heading level0 row2" >I</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col0" class="data row2 col0" >58</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col1" class="data row2 col1" >9.66216</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col2" class="data row2 col2" >7</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row2_col3" class="data row2 col3" >148</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row3" class="row_heading level0 row3" >II</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col0" class="data row3 col0" >45</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col1" class="data row3 col1" >13.6279</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col2" class="data row3 col2" >11</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row3_col3" class="data row3 col3" >86</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row4" class="row_heading level0 row4" >III</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col0" class="data row4 col0" >24</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col1" class="data row4 col1" >6.53409</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col2" class="data row4 col2" >5</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row4_col3" class="data row4 col3" >264</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row5" class="row_heading level0 row5" >IV-A</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col0" class="data row5 col0" >60</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col1" class="data row5 col1" >9.96721</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col2" class="data row5 col2" >8</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row5_col3" class="data row5 col3" >183</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row6" class="row_heading level0 row6" >IV-B</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col0" class="data row6 col0" >50</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col1" class="data row6 col1" >13.8354</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col2" class="data row6 col2" >11</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row6_col3" class="data row6 col3" >79</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row7" class="row_heading level0 row7" >IX</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col0" class="data row7 col0" >39</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col1" class="data row7 col1" >8.04167</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col2" class="data row7 col2" >6.5</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row7_col3" class="data row7 col3" >96</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row8" class="row_heading level0 row8" >NCR</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col0" class="data row8 col0" >25</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col1" class="data row8 col1" >0.291667</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col2" class="data row8 col2" >0</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row8_col3" class="data row8 col3" >384</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row9" class="row_heading level0 row9" >V</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col0" class="data row9 col0" >40</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col1" class="data row9 col1" >9.52713</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col2" class="data row9 col2" >8</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row9_col3" class="data row9 col3" >129</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row10" class="row_heading level0 row10" >VI</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col0" class="data row10 col0" >47</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col1" class="data row10 col1" >12.169</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col2" class="data row10 col2" >10</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row10_col3" class="data row10 col3" >142</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row11" class="row_heading level0 row11" >VII</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col0" class="data row11 col0" >37</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col1" class="data row11 col1" >11.2908</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col2" class="data row11 col2" >9</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row11_col3" class="data row11 col3" >141</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row12" class="row_heading level0 row12" >VIII</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col0" class="data row12 col0" >22</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col1" class="data row12 col1" >4.84472</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col2" class="data row12 col2" >4</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row12_col3" class="data row12 col3" >161</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row13" class="row_heading level0 row13" >X</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col0" class="data row13 col0" >73</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col1" class="data row13 col1" >10.9773</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col2" class="data row13 col2" >9</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row13_col3" class="data row13 col3" >88</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row14" class="row_heading level0 row14" >XI</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col0" class="data row14 col0" >41</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col1" class="data row14 col1" >15.9365</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col2" class="data row14 col2" >16</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row14_col3" class="data row14 col3" >63</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row15" class="row_heading level0 row15" >XII</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col0" class="data row15 col0" >49</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col1" class="data row15 col1" >16.7826</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col2" class="data row15 col2" >18</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row15_col3" class="data row15 col3" >46</td>
-            </tr>
-            <tr>
-                        <th id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6level0_row16" class="row_heading level0 row16" >XIII</th>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col0" class="data row16 col0" >35</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col1" class="data row16 col1" >4.94828</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col2" class="data row16 col2" >3.5</td>
-                        <td id="T_e436bd28_6dd2_11ea_bd61_9828a631b9e6row16_col3" class="data row16 col3" >58</td>
-            </tr>
-    </tbody></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>max</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ARMM</th>
+      <td>8</td>
+      <td>0.13</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>CAR</th>
+      <td>13</td>
+      <td>0.40</td>
+      <td>0</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>13</td>
+      <td>0.35</td>
+      <td>0</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>II</th>
+      <td>5</td>
+      <td>0.24</td>
+      <td>0</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>III</th>
+      <td>15</td>
+      <td>0.15</td>
+      <td>0</td>
+      <td>260</td>
+    </tr>
+    <tr>
+      <th>IV-A</th>
+      <td>24</td>
+      <td>0.65</td>
+      <td>0</td>
+      <td>164</td>
+    </tr>
+    <tr>
+      <th>IV-B</th>
+      <td>6</td>
+      <td>0.38</td>
+      <td>0</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>IX</th>
+      <td>22</td>
+      <td>0.89</td>
+      <td>0</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>NCR</th>
+      <td>25</td>
+      <td>0.25</td>
+      <td>0</td>
+      <td>382</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>13</td>
+      <td>0.82</td>
+      <td>0</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>11</td>
+      <td>0.56</td>
+      <td>0</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>VII</th>
+      <td>18</td>
+      <td>0.90</td>
+      <td>0</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th>VIII</th>
+      <td>16</td>
+      <td>0.54</td>
+      <td>0</td>
+      <td>160</td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td>13</td>
+      <td>0.62</td>
+      <td>0</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>XI</th>
+      <td>11</td>
+      <td>0.44</td>
+      <td>0</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>XII</th>
+      <td>25</td>
+      <td>1.34</td>
+      <td>0</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>XIII</th>
+      <td>8</td>
+      <td>0.73</td>
+      <td>0</td>
+      <td>56</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -2035,6 +1751,19 @@ df_deg[df_deg['Region']=='CAR']
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2045,14 +1774,19 @@ df_deg[df_deg['Region']=='CAR']
   </thead>
   <tbody>
     <tr>
+      <th>75</th>
+      <td>CAR</td>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>76</th>
       <td>CAR</td>
-      <td>5</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>77</th>
       <td>CAR</td>
-      <td>20</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>78</th>
@@ -2062,7 +1796,7 @@ df_deg[df_deg['Region']=='CAR']
     <tr>
       <th>79</th>
       <td>CAR</td>
-      <td>8</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>80</th>
@@ -2070,38 +1804,457 @@ df_deg[df_deg['Region']=='CAR']
       <td>0</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
+      <th>81</th>
+      <td>CAR</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>169</th>
+      <th>82</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>CAR</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>CAR</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>CAR</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>CAR</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>128</th>
       <td>CAR</td>
       <td>13</td>
     </tr>
     <tr>
+      <th>129</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>CAR</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>CAR</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>CAR</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>CAR</td>
+      <td>0</td>
+    </tr>
+    <tr>
       <th>170</th>
       <td>CAR</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>171</th>
-      <td>CAR</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>172</th>
-      <td>CAR</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>173</th>
-      <td>CAR</td>
-      <td>6</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>98 rows × 2 columns</p>
 </div>
 
 
@@ -2118,7 +2271,7 @@ ax.set_xticklabels(labels, ha='right');
 ```
 
 
-![png](output_img/output_121_0.png)
+![png](output_img/output_120_0.png)
 
 
 
@@ -2177,6 +2330,19 @@ bhs_rhu_spl
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2199,139 +2365,139 @@ bhs_rhu_spl
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>0.649289</td>
-      <td>30.094905</td>
-      <td>5.555199</td>
-      <td>4.055974</td>
-      <td>43</td>
+      <td>4.29</td>
+      <td>4.29</td>
+      <td>4.29</td>
+      <td>4.29</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>1.518987</td>
-      <td>21.322759</td>
-      <td>6.019620</td>
-      <td>5.026051</td>
-      <td>75</td>
+      <td>2.61</td>
+      <td>12.68</td>
+      <td>7.60</td>
+      <td>8.42</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>0.003270</td>
-      <td>31.656414</td>
-      <td>4.453676</td>
-      <td>3.590668</td>
-      <td>140</td>
+      <td>0.98</td>
+      <td>20.15</td>
+      <td>5.96</td>
+      <td>3.36</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>2.391830</td>
-      <td>31.657728</td>
-      <td>5.754392</td>
-      <td>5.396387</td>
-      <td>82</td>
+      <td>2.36</td>
+      <td>16.81</td>
+      <td>10.96</td>
+      <td>10.32</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>0.090624</td>
-      <td>24.479212</td>
-      <td>3.185737</td>
-      <td>2.704451</td>
-      <td>237</td>
+      <td>0.35</td>
+      <td>9.25</td>
+      <td>3.64</td>
+      <td>3.11</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>0.211387</td>
-      <td>30.291852</td>
-      <td>3.931670</td>
-      <td>3.347734</td>
-      <td>157</td>
+      <td>0.83</td>
+      <td>15.99</td>
+      <td>4.22</td>
+      <td>4.24</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>IV-B</th>
-      <td>2.339802</td>
-      <td>51.197031</td>
-      <td>8.056442</td>
-      <td>5.812716</td>
-      <td>75</td>
+      <td>6.16</td>
+      <td>21.42</td>
+      <td>13.79</td>
+      <td>13.79</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>IX</th>
-      <td>0.860555</td>
-      <td>42.921784</td>
-      <td>6.716191</td>
-      <td>4.831967</td>
-      <td>92</td>
+      <td>3.83</td>
+      <td>42.95</td>
+      <td>16.33</td>
+      <td>8.21</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>NCR</th>
-      <td>0.251464</td>
-      <td>73.301590</td>
-      <td>14.818221</td>
-      <td>3.231071</td>
-      <td>19</td>
+      <td>1.52</td>
+      <td>83.05</td>
+      <td>53.08</td>
+      <td>63.88</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>0.134356</td>
-      <td>32.457395</td>
-      <td>6.707730</td>
-      <td>4.976420</td>
-      <td>118</td>
+      <td>1.22</td>
+      <td>57.83</td>
+      <td>16.51</td>
+      <td>7.84</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>VI</th>
-      <td>0.535578</td>
-      <td>38.196660</td>
-      <td>5.561894</td>
-      <td>4.348519</td>
-      <td>136</td>
+      <td>0.00</td>
+      <td>32.29</td>
+      <td>8.31</td>
+      <td>5.91</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>1.090008</td>
-      <td>28.913794</td>
-      <td>5.104714</td>
-      <td>4.271316</td>
-      <td>134</td>
+      <td>0.37</td>
+      <td>12.33</td>
+      <td>4.32</td>
+      <td>3.99</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>0.040794</td>
-      <td>86.024774</td>
-      <td>6.280386</td>
-      <td>4.214814</td>
-      <td>145</td>
+      <td>0.00</td>
+      <td>49.12</td>
+      <td>13.45</td>
+      <td>5.65</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>X</th>
-      <td>1.000000</td>
-      <td>23.343704</td>
-      <td>5.946340</td>
-      <td>4.620027</td>
-      <td>83</td>
+      <td>3.17</td>
+      <td>22.97</td>
+      <td>9.34</td>
+      <td>7.30</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>0.792454</td>
-      <td>47.848289</td>
-      <td>8.905371</td>
-      <td>6.286121</td>
-      <td>58</td>
+      <td>3.79</td>
+      <td>12.32</td>
+      <td>6.77</td>
+      <td>4.19</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>2.234870</td>
-      <td>67.106333</td>
-      <td>9.835895</td>
-      <td>6.946024</td>
-      <td>44</td>
+      <td>4.33</td>
+      <td>33.07</td>
+      <td>10.53</td>
+      <td>5.78</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>0.653171</td>
-      <td>34.379775</td>
-      <td>6.716984</td>
-      <td>5.894868</td>
-      <td>43</td>
+      <td>0.65</td>
+      <td>24.45</td>
+      <td>7.07</td>
+      <td>5.99</td>
+      <td>13</td>
     </tr>
   </tbody>
 </table>
@@ -2353,7 +2519,7 @@ ax.set_ylabel("Average shortest path length (BHS->RHU)", fontsize=14);
 ```
 
 
-![png](output_img/output_132_0.png)
+![png](output_img/output_131_0.png)
 
 
 ##### RHU -> HOSP path
@@ -2389,6 +2555,19 @@ rhu_hosp_spl
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2411,138 +2590,138 @@ rhu_hosp_spl
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>13.962185</td>
-      <td>52.735692</td>
-      <td>30.149258</td>
-      <td>32.533763</td>
+      <td>13.96</td>
+      <td>41.71</td>
+      <td>27.51</td>
+      <td>25.55</td>
       <td>18</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>6.515990</td>
-      <td>30.507583</td>
-      <td>16.465053</td>
-      <td>15.996059</td>
+      <td>6.52</td>
+      <td>30.51</td>
+      <td>15.63</td>
+      <td>14.41</td>
       <td>35</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>5.734009</td>
-      <td>34.926724</td>
-      <td>16.853573</td>
-      <td>14.635240</td>
+      <td>5.73</td>
+      <td>32.67</td>
+      <td>16.12</td>
+      <td>12.81</td>
       <td>36</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>0.224660</td>
-      <td>43.619413</td>
-      <td>18.391035</td>
-      <td>14.649935</td>
+      <td>0.22</td>
+      <td>43.62</td>
+      <td>18.39</td>
+      <td>14.65</td>
       <td>32</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>3.534404</td>
-      <td>33.860918</td>
-      <td>12.974554</td>
-      <td>10.794383</td>
+      <td>3.53</td>
+      <td>33.86</td>
+      <td>12.97</td>
+      <td>10.79</td>
       <td>57</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>3.127798</td>
-      <td>72.941863</td>
-      <td>16.033547</td>
-      <td>15.330127</td>
+      <td>3.13</td>
+      <td>72.94</td>
+      <td>15.79</td>
+      <td>14.95</td>
       <td>57</td>
     </tr>
     <tr>
       <th>IV-B</th>
-      <td>5.941933</td>
-      <td>54.632104</td>
-      <td>27.001538</td>
-      <td>25.505928</td>
+      <td>5.94</td>
+      <td>54.63</td>
+      <td>27.00</td>
+      <td>25.51</td>
       <td>27</td>
     </tr>
     <tr>
       <th>IX</th>
-      <td>0.424602</td>
-      <td>56.186424</td>
-      <td>23.804782</td>
-      <td>22.073029</td>
+      <td>0.42</td>
+      <td>56.19</td>
+      <td>23.47</td>
+      <td>21.24</td>
       <td>21</td>
     </tr>
     <tr>
       <th>NCR</th>
-      <td>1.197162</td>
-      <td>33.929120</td>
-      <td>7.209383</td>
-      <td>3.624081</td>
+      <td>1.20</td>
+      <td>33.93</td>
+      <td>7.21</td>
+      <td>3.62</td>
       <td>45</td>
     </tr>
     <tr>
       <th>V</th>
-      <td>10.950577</td>
-      <td>52.009053</td>
-      <td>22.736470</td>
-      <td>19.480205</td>
+      <td>10.95</td>
+      <td>52.01</td>
+      <td>22.81</td>
+      <td>19.48</td>
       <td>39</td>
     </tr>
     <tr>
       <th>VI</th>
-      <td>7.500145</td>
-      <td>40.178620</td>
-      <td>18.404906</td>
-      <td>16.457709</td>
+      <td>7.50</td>
+      <td>40.18</td>
+      <td>16.84</td>
+      <td>15.35</td>
       <td>47</td>
     </tr>
     <tr>
       <th>VII</th>
-      <td>5.430379</td>
-      <td>45.774940</td>
-      <td>20.575313</td>
-      <td>18.711082</td>
+      <td>5.43</td>
+      <td>45.77</td>
+      <td>20.58</td>
+      <td>18.71</td>
       <td>45</td>
     </tr>
     <tr>
       <th>VIII</th>
-      <td>7.553561</td>
-      <td>66.158472</td>
-      <td>26.828831</td>
-      <td>23.976607</td>
+      <td>7.55</td>
+      <td>55.53</td>
+      <td>25.25</td>
+      <td>23.95</td>
       <td>39</td>
     </tr>
     <tr>
       <th>X</th>
-      <td>1.526728</td>
-      <td>53.275915</td>
-      <td>20.278250</td>
-      <td>17.490886</td>
+      <td>1.53</td>
+      <td>53.28</td>
+      <td>20.09</td>
+      <td>16.63</td>
       <td>36</td>
     </tr>
     <tr>
       <th>XI</th>
-      <td>7.136037</td>
-      <td>74.999220</td>
-      <td>29.562912</td>
-      <td>25.195270</td>
-      <td>20</td>
+      <td>7.14</td>
+      <td>48.44</td>
+      <td>26.17</td>
+      <td>23.32</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>XII</th>
-      <td>14.237176</td>
-      <td>81.919571</td>
-      <td>34.138201</td>
-      <td>19.554665</td>
+      <td>13.03</td>
+      <td>41.43</td>
+      <td>20.74</td>
+      <td>17.68</td>
       <td>17</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>7.659056</td>
-      <td>40.073419</td>
-      <td>19.266280</td>
-      <td>18.849923</td>
+      <td>7.66</td>
+      <td>40.07</td>
+      <td>19.27</td>
+      <td>18.85</td>
       <td>25</td>
     </tr>
   </tbody>
@@ -2568,7 +2747,7 @@ ax.set_ylabel("Average shortest path length (RHU->Hosp)", fontsize=14);
 ```
 
 
-![png](output_img/output_138_0.png)
+![png](output_img/output_137_0.png)
 
 
 ##### BHS -> HOSP path
@@ -2604,6 +2783,19 @@ bhs_hosp_spl
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2626,139 +2818,139 @@ bhs_hosp_spl
   <tbody>
     <tr>
       <th>ARMM</th>
-      <td>4.514683</td>
-      <td>65.315743</td>
-      <td>35.227616</td>
-      <td>38.248608</td>
-      <td>17</td>
+      <td>12.17</td>
+      <td>38.93</td>
+      <td>25.24</td>
+      <td>24.61</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>CAR</th>
-      <td>10.496147</td>
-      <td>40.529846</td>
-      <td>22.461655</td>
-      <td>21.810185</td>
-      <td>35</td>
+      <td>15.29</td>
+      <td>62.75</td>
+      <td>27.42</td>
+      <td>22.69</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>I</th>
-      <td>3.775258</td>
-      <td>36.868836</td>
-      <td>18.458360</td>
-      <td>16.845460</td>
-      <td>39</td>
+      <td>1.74</td>
+      <td>69.47</td>
+      <td>22.28</td>
+      <td>17.81</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>II</th>
-      <td>4.400319</td>
-      <td>49.010055</td>
-      <td>21.305409</td>
-      <td>21.137520</td>
-      <td>35</td>
+      <td>9.06</td>
+      <td>75.55</td>
+      <td>39.42</td>
+      <td>36.04</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>III</th>
-      <td>1.273738</td>
-      <td>37.934485</td>
-      <td>15.555438</td>
-      <td>12.757185</td>
-      <td>62</td>
+      <td>1.13</td>
+      <td>63.65</td>
+      <td>18.09</td>
+      <td>13.53</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>IV-A</th>
-      <td>1.000000</td>
-      <td>78.270904</td>
-      <td>18.078267</td>
-      <td>15.302924</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <th>IV-B</th>
-      <td>3.775258</td>
-      <td>56.020411</td>
-      <td>29.101808</td>
-      <td>28.420557</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <th>IX</th>
-      <td>0.868617</td>
-      <td>61.034463</td>
-      <td>25.666220</td>
-      <td>24.705947</td>
-      <td>23</td>
-    </tr>
-    <tr>
-      <th>NCR</th>
-      <td>1.214162</td>
-      <td>68.624784</td>
-      <td>19.190377</td>
-      <td>6.627693</td>
-      <td>41</td>
-    </tr>
-    <tr>
-      <th>V</th>
-      <td>0.672049</td>
-      <td>51.679290</td>
-      <td>25.130058</td>
-      <td>22.924927</td>
-      <td>41</td>
-    </tr>
-    <tr>
-      <th>VI</th>
-      <td>9.229814</td>
-      <td>49.104335</td>
-      <td>21.484581</td>
-      <td>19.700995</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>VII</th>
-      <td>6.579954</td>
-      <td>62.517495</td>
-      <td>23.947535</td>
-      <td>23.186254</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>VIII</th>
-      <td>12.824437</td>
-      <td>88.354094</td>
-      <td>33.737771</td>
-      <td>29.562692</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <th>X</th>
-      <td>7.830698</td>
-      <td>52.842066</td>
-      <td>23.685184</td>
-      <td>22.379681</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>XI</th>
-      <td>1.860903</td>
-      <td>74.253652</td>
-      <td>29.385675</td>
-      <td>30.158588</td>
+      <td>1.45</td>
+      <td>49.21</td>
+      <td>18.65</td>
+      <td>17.41</td>
       <td>25</td>
     </tr>
     <tr>
+      <th>IV-B</th>
+      <td>11.32</td>
+      <td>23.08</td>
+      <td>17.20</td>
+      <td>17.20</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>IX</th>
+      <td>10.07</td>
+      <td>52.89</td>
+      <td>33.75</td>
+      <td>39.08</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>NCR</th>
+      <td>3.09</td>
+      <td>86.34</td>
+      <td>53.10</td>
+      <td>65.95</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>V</th>
+      <td>16.30</td>
+      <td>63.85</td>
+      <td>35.28</td>
+      <td>31.63</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>VI</th>
+      <td>7.13</td>
+      <td>60.55</td>
+      <td>25.50</td>
+      <td>22.54</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>VII</th>
+      <td>2.91</td>
+      <td>64.14</td>
+      <td>20.35</td>
+      <td>20.19</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>VIII</th>
+      <td>13.70</td>
+      <td>73.88</td>
+      <td>38.24</td>
+      <td>35.28</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td>15.62</td>
+      <td>41.22</td>
+      <td>25.33</td>
+      <td>21.74</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>XI</th>
+      <td>8.32</td>
+      <td>55.47</td>
+      <td>28.33</td>
+      <td>26.42</td>
+      <td>6</td>
+    </tr>
+    <tr>
       <th>XII</th>
-      <td>2.795512</td>
-      <td>71.173321</td>
-      <td>30.500227</td>
-      <td>23.274213</td>
-      <td>20</td>
+      <td>10.54</td>
+      <td>41.89</td>
+      <td>26.88</td>
+      <td>25.69</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>XIII</th>
-      <td>6.831491</td>
-      <td>57.345020</td>
-      <td>24.260983</td>
-      <td>24.000744</td>
-      <td>26</td>
+      <td>7.16</td>
+      <td>44.44</td>
+      <td>23.76</td>
+      <td>22.36</td>
+      <td>18</td>
     </tr>
   </tbody>
 </table>
@@ -2783,7 +2975,7 @@ ax.set_ylabel("Average shortest path length (BHS->Hosp)", fontsize=14);
 ```
 
 
-![png](output_img/output_144_0.png)
+![png](output_img/output_143_0.png)
 
 
 ## Simulations
@@ -2798,6 +2990,19 @@ nodes.groupby('HF_TYPE')['CATCHMENT'].describe()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2826,47 +3031,47 @@ nodes.groupby('HF_TYPE')['CATCHMENT'].describe()
   <tbody>
     <tr>
       <th>BARANGAY HEALTH STATION</th>
-      <td>17435.0</td>
-      <td>3800.183309</td>
-      <td>6013.845024</td>
-      <td>0.0</td>
-      <td>1302.00</td>
-      <td>2444.0</td>
-      <td>4408.50</td>
-      <td>123708.0</td>
+      <td>17,435.00</td>
+      <td>3,800.18</td>
+      <td>6,013.85</td>
+      <td>0.00</td>
+      <td>1,302.00</td>
+      <td>2,444.00</td>
+      <td>4,408.50</td>
+      <td>123,708.00</td>
     </tr>
     <tr>
       <th>HOSPITAL</th>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
     </tr>
     <tr>
       <th>INFIRMARY</th>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.00</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>nan</td>
     </tr>
     <tr>
       <th>RURAL HEALTH UNIT</th>
-      <td>2172.0</td>
-      <td>38663.139503</td>
-      <td>44947.384236</td>
-      <td>0.0</td>
-      <td>16981.75</td>
-      <td>30224.0</td>
-      <td>46929.25</td>
-      <td>903309.0</td>
+      <td>2,172.00</td>
+      <td>38,663.14</td>
+      <td>44,947.38</td>
+      <td>0.00</td>
+      <td>16,981.75</td>
+      <td>30,224.00</td>
+      <td>46,929.25</td>
+      <td>903,309.00</td>
     </tr>
   </tbody>
 </table>
@@ -2888,6 +3093,19 @@ intake.groupby('REGION')['CATCHMENT'].agg(['mean','median', 'min', 'max'])
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2908,122 +3126,122 @@ intake.groupby('REGION')['CATCHMENT'].agg(['mean','median', 'min', 'max'])
   <tbody>
     <tr>
       <th>AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
-      <td>9252.728460</td>
-      <td>2682.0</td>
-      <td>0.0</td>
-      <td>222885.0</td>
+      <td>9,252.73</td>
+      <td>2,682.00</td>
+      <td>0.00</td>
+      <td>222,885.00</td>
     </tr>
     <tr>
       <th>CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
-      <td>3688.141975</td>
-      <td>1187.0</td>
-      <td>0.0</td>
-      <td>134461.0</td>
+      <td>3,688.14</td>
+      <td>1,187.00</td>
+      <td>0.00</td>
+      <td>134,461.00</td>
     </tr>
     <tr>
       <th>NATIONAL CAPITAL REGION (NCR)</th>
-      <td>30745.293506</td>
-      <td>25084.0</td>
-      <td>0.0</td>
-      <td>290977.0</td>
+      <td>30,745.29</td>
+      <td>25,084.00</td>
+      <td>0.00</td>
+      <td>290,977.00</td>
     </tr>
     <tr>
       <th>REGION I (ILOCOS REGION)</th>
-      <td>6133.943131</td>
-      <td>2556.0</td>
-      <td>0.0</td>
-      <td>204135.0</td>
+      <td>6,133.94</td>
+      <td>2,556.00</td>
+      <td>0.00</td>
+      <td>204,135.00</td>
     </tr>
     <tr>
       <th>REGION II (CAGAYAN VALLEY)</th>
-      <td>4528.668281</td>
-      <td>1826.0</td>
-      <td>0.0</td>
-      <td>158245.0</td>
+      <td>4,528.67</td>
+      <td>1,826.00</td>
+      <td>0.00</td>
+      <td>158,245.00</td>
     </tr>
     <tr>
       <th>REGION III (CENTRAL LUZON)</th>
-      <td>9866.274949</td>
-      <td>3700.5</td>
-      <td>0.0</td>
-      <td>260691.0</td>
+      <td>9,866.27</td>
+      <td>3,700.50</td>
+      <td>0.00</td>
+      <td>260,691.00</td>
     </tr>
     <tr>
       <th>REGION IV-A (CALABAR ZON)</th>
-      <td>9040.417355</td>
-      <td>3122.5</td>
-      <td>0.0</td>
-      <td>463727.0</td>
+      <td>9,040.42</td>
+      <td>3,122.50</td>
+      <td>0.00</td>
+      <td>463,727.00</td>
     </tr>
     <tr>
       <th>REGION IV-B (MIMAROPA)</th>
-      <td>5363.064924</td>
-      <td>2104.5</td>
-      <td>0.0</td>
-      <td>272190.0</td>
+      <td>5,363.06</td>
+      <td>2,104.50</td>
+      <td>0.00</td>
+      <td>272,190.00</td>
     </tr>
     <tr>
       <th>REGION IX (ZAMBOANGA PENINSULA)</th>
-      <td>9427.200000</td>
-      <td>3773.5</td>
-      <td>0.0</td>
-      <td>903309.0</td>
+      <td>9,427.20</td>
+      <td>3,773.50</td>
+      <td>0.00</td>
+      <td>903,309.00</td>
     </tr>
     <tr>
       <th>REGION V (BICOL REGION)</th>
-      <td>7685.285319</td>
-      <td>3480.5</td>
-      <td>0.0</td>
-      <td>210047.0</td>
+      <td>7,685.29</td>
+      <td>3,480.50</td>
+      <td>0.00</td>
+      <td>210,047.00</td>
     </tr>
     <tr>
       <th>REGION VI (WESTERN VISAYAS)</th>
-      <td>7620.305286</td>
-      <td>3293.0</td>
-      <td>0.0</td>
-      <td>597740.0</td>
+      <td>7,620.31</td>
+      <td>3,293.00</td>
+      <td>0.00</td>
+      <td>597,740.00</td>
     </tr>
     <tr>
       <th>REGION VII (CENTRAL VISAYAS)</th>
-      <td>5827.443880</td>
-      <td>2131.0</td>
-      <td>0.0</td>
-      <td>414265.0</td>
+      <td>5,827.44</td>
+      <td>2,131.00</td>
+      <td>0.00</td>
+      <td>414,265.00</td>
     </tr>
     <tr>
       <th>REGION VIII (EASTERN VISAYAS)</th>
-      <td>9092.887701</td>
-      <td>4577.0</td>
-      <td>0.0</td>
-      <td>387813.0</td>
+      <td>9,092.89</td>
+      <td>4,577.00</td>
+      <td>0.00</td>
+      <td>387,813.00</td>
     </tr>
     <tr>
       <th>REGION X (NORTHERN MINDANAO)</th>
-      <td>6047.594231</td>
-      <td>2369.0</td>
-      <td>0.0</td>
-      <td>197890.0</td>
+      <td>6,047.59</td>
+      <td>2,369.00</td>
+      <td>0.00</td>
+      <td>197,890.00</td>
     </tr>
     <tr>
       <th>REGION XI (DAVAO REGION)</th>
-      <td>5155.099083</td>
-      <td>1818.5</td>
-      <td>0.0</td>
-      <td>175935.0</td>
+      <td>5,155.10</td>
+      <td>1,818.50</td>
+      <td>0.00</td>
+      <td>175,935.00</td>
     </tr>
     <tr>
       <th>REGION XII (SOCCSKSA RGEN)</th>
-      <td>8722.273183</td>
-      <td>2168.0</td>
-      <td>0.0</td>
-      <td>453585.0</td>
+      <td>8,722.27</td>
+      <td>2,168.00</td>
+      <td>0.00</td>
+      <td>453,585.00</td>
     </tr>
     <tr>
       <th>REGION XIII (CARAGA)</th>
-      <td>7212.888608</td>
-      <td>2530.0</td>
-      <td>0.0</td>
-      <td>137527.0</td>
+      <td>7,212.89</td>
+      <td>2,530.00</td>
+      <td>0.00</td>
+      <td>137,527.00</td>
     </tr>
   </tbody>
 </table>
@@ -3128,7 +3346,7 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_img/output_151_1.png)
+![png](output_img/output_150_1.png)
 
 
 
@@ -3208,13 +3426,13 @@ ax2.set_ylabel('Percentage of isolated RHUs')
 
 
 
-![png](output_img/output_152_1.png)
+![png](output_img/output_151_1.png)
 
 
 
 ```python
 print("Remaining hospitals")
-(df_rem_hosps*100).style.background_gradient()
+(df_rem_hosps*100)
 ```
 
     Remaining hospitals
@@ -3223,203 +3441,124 @@ print("Remaining hospitals")
 
 
 
-<style  type="text/css" >
-    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row0_col0 {
-            background-color:  #045e94;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row0_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row1_col0 {
-            background-color:  #034c78;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row1_col1 {
-            background-color:  #eee8f3;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row2_col0 {
-            background-color:  #67a4cc;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row2_col1 {
-            background-color:  #ece7f2;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row3_col0 {
-            background-color:  #2484ba;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row3_col1 {
-            background-color:  #a7bddb;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row4_col0 {
-            background-color:  #5a9ec9;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row4_col1 {
-            background-color:  #d4d4e8;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row5_col0 {
-            background-color:  #045e94;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row5_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row6_col0 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row6_col1 {
-            background-color:  #034a74;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row7_col0 {
-            background-color:  #034c78;
-            color:  #f1f1f1;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row7_col1 {
-            background-color:  #71a8ce;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row8_col0 {
-            background-color:  #b7c5df;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row8_col1 {
-            background-color:  #d4d4e8;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row9_col0 {
-            background-color:  #dcdaeb;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row9_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row10_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row10_col1 {
-            background-color:  #f4eef6;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row11_col0 {
-            background-color:  #c5cce3;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row11_col1 {
-            background-color:  #f4eef6;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row12_col0 {
-            background-color:  #f1ebf5;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row12_col1 {
-            background-color:  #efe9f3;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row13_col0 {
-            background-color:  #eee8f3;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row13_col1 {
-            background-color:  #f2ecf5;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row14_col0 {
-            background-color:  #d0d1e6;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row14_col1 {
-            background-color:  #dfddec;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row15_col0 {
-            background-color:  #a9bfdc;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row15_col1 {
-            background-color:  #d8d7e9;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row16_col0 {
-            background-color:  #81aed2;
-            color:  #000000;
-        }    #T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row16_col1 {
-            background-color:  #4295c3;
-            color:  #000000;
-        }</style><table id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0.05%</th>        <th class="col_heading level0 col1" >0.5%</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row0" class="row_heading level0 row0" >AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row0_col0" class="data row0 col0" >33.3333</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row0_col1" class="data row0 col1" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row1" class="row_heading level0 row1" >CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row1_col0" class="data row1 col0" >36.1111</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row1_col1" class="data row1 col1" >2.77778</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row2" class="row_heading level0 row2" >REGION IV-B (MIMAROPA)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row2_col0" class="data row2 col0" >21.2121</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row2_col1" class="data row2 col1" >3.0303</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row3" class="row_heading level0 row3" >NATIONAL CAPITAL REGION (NCR)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row3_col0" class="data row3 col0" >26.6667</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row3_col1" class="data row3 col1" >8.88889</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row4" class="row_heading level0 row4" >REGION X (NORTHERN MINDANAO)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row4_col0" class="data row4 col0" >22.2222</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row4_col1" class="data row4 col1" >5.55556</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row5" class="row_heading level0 row5" >REGION XI (DAVAO REGION)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row5_col0" class="data row5 col0" >33.3333</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row5_col1" class="data row5 col1" >23.8095</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row6" class="row_heading level0 row6" >REGION XII (SOCCSKSA RGEN)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row6_col0" class="data row6 col0" >38.8889</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row6_col1" class="data row6 col1" >22.2222</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row7" class="row_heading level0 row7" >REGION XIII (CARAGA)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row7_col0" class="data row7 col0" >36</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row7_col1" class="data row7 col1" >12</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row8" class="row_heading level0 row8" >REGION I (ILOCOS REGION)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row8_col0" class="data row8 col0" >13.8889</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row8_col1" class="data row8 col1" >5.55556</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row9" class="row_heading level0 row9" >REGION II (CAGAYAN VALLEY)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row9_col0" class="data row9 col0" >9.09091</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row9_col1" class="data row9 col1" >0</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row10" class="row_heading level0 row10" >REGION III (CENTRAL LUZON)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row10_col0" class="data row10 col0" >1.75439</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row10_col1" class="data row10 col1" >1.75439</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row11" class="row_heading level0 row11" >REGION IV-A (CALABAR ZON)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row11_col0" class="data row11 col0" >12.2807</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row11_col1" class="data row11 col1" >1.75439</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row12" class="row_heading level0 row12" >REGION V (BICOL REGION)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row12_col0" class="data row12 col0" >5.12821</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row12_col1" class="data row12 col1" >2.5641</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row13" class="row_heading level0 row13" >REGION VI (WESTERN VISAYAS)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row13_col0" class="data row13 col0" >6</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row13_col1" class="data row13 col1" >2</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row14" class="row_heading level0 row14" >REGION VII (CENTRAL VISAYAS)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row14_col0" class="data row14 col0" >11.1111</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row14_col1" class="data row14 col1" >4.44444</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row15" class="row_heading level0 row15" >REGION VIII (EASTERN VISAYAS)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row15_col0" class="data row15 col0" >15.3846</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row15_col1" class="data row15 col1" >5.12821</td>
-            </tr>
-            <tr>
-                        <th id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6level0_row16" class="row_heading level0 row16" >REGION IX (ZAMBOANGA PENINSULA)</th>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row16_col0" class="data row16 col0" >19.0476</td>
-                        <td id="T_2c7fdff0_6dd3_11ea_8b43_9828a631b9e6row16_col1" class="data row16 col1" >14.2857</td>
-            </tr>
-    </tbody></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.05%</th>
+      <th>0.5%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
+      <td>22.22</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
+      <td>38.89</td>
+      <td>2.78</td>
+    </tr>
+    <tr>
+      <th>REGION IV-B (MIMAROPA)</th>
+      <td>26.47</td>
+      <td>2.94</td>
+    </tr>
+    <tr>
+      <th>NATIONAL CAPITAL REGION (NCR)</th>
+      <td>27.08</td>
+      <td>8.33</td>
+    </tr>
+    <tr>
+      <th>REGION X (NORTHERN MINDANAO)</th>
+      <td>22.22</td>
+      <td>5.56</td>
+    </tr>
+    <tr>
+      <th>REGION XI (DAVAO REGION)</th>
+      <td>26.92</td>
+      <td>19.23</td>
+    </tr>
+    <tr>
+      <th>REGION XII (SOCCSKSA RGEN)</th>
+      <td>28.57</td>
+      <td>19.05</td>
+    </tr>
+    <tr>
+      <th>REGION XIII (CARAGA)</th>
+      <td>26.92</td>
+      <td>11.54</td>
+    </tr>
+    <tr>
+      <th>REGION I (ILOCOS REGION)</th>
+      <td>12.82</td>
+      <td>5.13</td>
+    </tr>
+    <tr>
+      <th>REGION II (CAGAYAN VALLEY)</th>
+      <td>8.11</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>REGION III (CENTRAL LUZON)</th>
+      <td>4.84</td>
+      <td>1.61</td>
+    </tr>
+    <tr>
+      <th>REGION IV-A (CALABAR ZON)</th>
+      <td>8.20</td>
+      <td>1.64</td>
+    </tr>
+    <tr>
+      <th>REGION V (BICOL REGION)</th>
+      <td>4.88</td>
+      <td>2.44</td>
+    </tr>
+    <tr>
+      <th>REGION VI (WESTERN VISAYAS)</th>
+      <td>6.00</td>
+      <td>2.00</td>
+    </tr>
+    <tr>
+      <th>REGION VII (CENTRAL VISAYAS)</th>
+      <td>10.42</td>
+      <td>4.17</td>
+    </tr>
+    <tr>
+      <th>REGION VIII (EASTERN VISAYAS)</th>
+      <td>12.82</td>
+      <td>5.13</td>
+    </tr>
+    <tr>
+      <th>REGION IX (ZAMBOANGA PENINSULA)</th>
+      <td>17.39</td>
+      <td>13.04</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
 
 ```python
 print("RHU isolates")
-(df_isolates*100).style.background_gradient()
+(df_isolates*100)
 ```
 
     RHU isolates
@@ -3428,193 +3567,114 @@ print("RHU isolates")
 
 
 
-<style  type="text/css" >
-    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row0_col0 {
-            background-color:  #7eadd1;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row0_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row1_col0 {
-            background-color:  #fcf4fa;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row1_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row2_col0 {
-            background-color:  #62a2cb;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row2_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row3_col0 {
-            background-color:  #94b6d7;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row3_col1 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row4_col0 {
-            background-color:  #80aed2;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row4_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row5_col0 {
-            background-color:  #fff7fb;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row5_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row6_col0 {
-            background-color:  #b5c4df;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row6_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row7_col0 {
-            background-color:  #5a9ec9;
-            color:  #000000;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row7_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row8_col0 {
-            background-color:  #03446a;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row8_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row9_col0 {
-            background-color:  #04649e;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row9_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row10_col0 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row10_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row11_col0 {
-            background-color:  #045b8e;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row11_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row12_col0 {
-            background-color:  #0567a1;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row12_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row13_col0 {
-            background-color:  #056ba9;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row13_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row14_col0 {
-            background-color:  #023f64;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row14_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row15_col0 {
-            background-color:  #034e7b;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row15_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row16_col0 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }    #T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row16_col1 {
-            background-color:  #023858;
-            color:  #f1f1f1;
-        }</style><table id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >0.05%</th>        <th class="col_heading level0 col1" >0.5%</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row0" class="row_heading level0 row0" >AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row0_col0" class="data row0 col0" >52.8302</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row0_col1" class="data row0 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row1" class="row_heading level0 row1" >CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row1_col0" class="data row1 col0" >12.3288</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row1_col1" class="data row1 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row2" class="row_heading level0 row2" >REGION IV-B (MIMAROPA)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row2_col0" class="data row2 col0" >58.6957</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row2_col1" class="data row2 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row3" class="row_heading level0 row3" >NATIONAL CAPITAL REGION (NCR)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row3_col0" class="data row3 col0" >48.1481</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row3_col1" class="data row3 col1" >92.5926</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row4" class="row_heading level0 row4" >REGION X (NORTHERN MINDANAO)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row4_col0" class="data row4 col0" >52.6316</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row4_col1" class="data row4 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row5" class="row_heading level0 row5" >REGION XI (DAVAO REGION)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row5_col0" class="data row5 col0" >10.5263</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row5_col1" class="data row5 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row6" class="row_heading level0 row6" >REGION XII (SOCCSKSA RGEN)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row6_col0" class="data row6 col0" >40</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row6_col1" class="data row6 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row7" class="row_heading level0 row7" >REGION XIII (CARAGA)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row7_col0" class="data row7 col0" >60</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row7_col1" class="data row7 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row8" class="row_heading level0 row8" >REGION I (ILOCOS REGION)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row8_col0" class="data row8 col0" >96.1165</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row8_col1" class="data row8 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row9" class="row_heading level0 row9" >REGION II (CAGAYAN VALLEY)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row9_col0" class="data row9 col0" >83.3333</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row9_col1" class="data row9 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row10" class="row_heading level0 row10" >REGION III (CENTRAL LUZON)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row10_col0" class="data row10 col0" >100</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row10_col1" class="data row10 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row11" class="row_heading level0 row11" >REGION IV-A (CALABAR ZON)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row11_col0" class="data row11 col0" >88.1481</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row11_col1" class="data row11 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row12" class="row_heading level0 row12" >REGION V (BICOL REGION)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row12_col0" class="data row12 col0" >82.3529</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row12_col1" class="data row12 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row13" class="row_heading level0 row13" >REGION VI (WESTERN VISAYAS)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row13_col0" class="data row13 col0" >79.7872</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row13_col1" class="data row13 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row14" class="row_heading level0 row14" >REGION VII (CENTRAL VISAYAS)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row14_col0" class="data row14 col0" >97.4684</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row14_col1" class="data row14 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row15" class="row_heading level0 row15" >REGION VIII (EASTERN VISAYAS)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row15_col0" class="data row15 col0" >92.5926</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row15_col1" class="data row15 col1" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6level0_row16" class="row_heading level0 row16" >REGION IX (ZAMBOANGA PENINSULA)</th>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row16_col0" class="data row16 col0" >100</td>
-                        <td id="T_2cc767d8_6dd3_11ea_8877_9828a631b9e6row16_col1" class="data row16 col1" >100</td>
-            </tr>
-    </tbody></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0.05%</th>
+      <th>0.5%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</th>
+      <td>67.92</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>CORDILLERA ADMINISTRA TIVE REGION (CAR)</th>
+      <td>12.33</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION IV-B (MIMAROPA)</th>
+      <td>58.70</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>NATIONAL CAPITAL REGION (NCR)</th>
+      <td>45.27</td>
+      <td>92.59</td>
+    </tr>
+    <tr>
+      <th>REGION X (NORTHERN MINDANAO)</th>
+      <td>52.63</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION XI (DAVAO REGION)</th>
+      <td>10.53</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION XII (SOCCSKSA RGEN)</th>
+      <td>46.67</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION XIII (CARAGA)</th>
+      <td>68.57</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION I (ILOCOS REGION)</th>
+      <td>96.12</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION II (CAGAYAN VALLEY)</th>
+      <td>82.05</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION III (CENTRAL LUZON)</th>
+      <td>94.42</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION IV-A (CALABAR ZON)</th>
+      <td>91.11</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION V (BICOL REGION)</th>
+      <td>82.35</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION VI (WESTERN VISAYAS)</th>
+      <td>79.79</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION VII (CENTRAL VISAYAS)</th>
+      <td>97.47</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION VIII (EASTERN VISAYAS)</th>
+      <td>92.59</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <th>REGION IX (ZAMBOANGA PENINSULA)</th>
+      <td>100.00</td>
+      <td>100.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
