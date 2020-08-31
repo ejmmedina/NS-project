@@ -5,10 +5,10 @@ This project aims to analyze to referral system among health units in the Philip
 
 ##### Report and analysis
 
-Segments of the report is added in the notebook. If you wish to have a copy of the full report, please send me a message via <a href="mailto:elijahjustinmedina@gmail.com">e-mail</a> or <a href="https://www.linkedin.com/in/elijah-justin-medina/">LinkedIn</a>.
+Segments of the report is added in the 
+<a href="https://github.com/ejmmedina/hcpn-network-analysis/blob/master/hcpn-network-NS.md">notebook</a>. If you wish to have a copy of the full report, please send me a message via <a href="mailto:elijahjustinmedina@gmail.com">e-mail</a> or <a href="https://www.linkedin.com/in/elijah-justin-medina/">LinkedIn</a>.
 
 ##### Data and confidentiality
 
 This project contains the code for the network science project: `Network Analysis of the Primary Healthcare Facility Referral System in the Philippines`. Data used for this project is not included due to confidentiality.
 
-<a href="https://github.com/ejmmedina/hcpn-network-analysis/blob/master/hcpn-network-NS.md">Code</a>
