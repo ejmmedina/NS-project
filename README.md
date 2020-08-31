@@ -10,3 +10,5 @@ Segments of the report is added in the notebook. If you wish to have a copy of t
 ##### Data and confidentiality
 
 This project contains the code for the network science project: `Network Analysis of the Primary Healthcare Facility Referral System in the Philippines`. Data used for this project is not included due to confidentiality.
+
+<a href="https://github.com/ejmmedina/hcpn-network-analysis/blob/master/hcpn-network-NS.md">Code</a>
